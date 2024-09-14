@@ -106,17 +106,11 @@ body{
 
 /*************      Side Bar   *****************/
 
-.userPFP {
-    width: 50px;
-    border-radius: 100%;
-    border: 1px solid #eee;   
-}
-
 .sidebar {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 120px;
+    width: 100px;
     background-color: #12171e;
     padding: 10px;
     transition: all 0.5s ease;
@@ -138,6 +132,76 @@ body{
     display: none;
     color: white;
     font-size: 1.2rem;
+    line-height: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.userPFP {
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid #eee;   
+}
+
+.user {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    display: none;
+    color: white;
+}
+
+.nav-list {
+    margin-top: 25px;
+    
+}
+
+.nav-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    text-decoration: none;
+    gap: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.nav-list li a:hover {
+    background-color: #fff;
+    color: #12171e;
+}
+
+.nav-list i {
+    font-size: 25px;
+}
+
+.nav-item {
+    display: none;
+}
+
+.tooltip {
+    position: relative;
+    top: -45px;
+    left: 100px;
+    visibility: hidden;
+    background-color: #fff;
+    color: #12171e;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.nav-list li:hover .tooltip {
+    visibility: visible;
+}
+
+.sidebar.active .nav-list li:hover .tooltip {
+    visibility: hidden;
 }
 
 .sidebar.active {
@@ -152,12 +216,23 @@ body{
     display: block;
 }
 
+.sidebar.active .user-name {
+    display: block;
+}
+
+.sidebar.active .nav-item {
+    display: inline;
+}
+
+.sidebar.active .nav-list li a {
+    padding-left: 20px;
+    justify-content: left;
+}
+
 /*************      Dashboard Content   *****************/
 .main-content {
     background-color: #5ea9d2;
     height: 100%;
-    top: 0;
-    left: 55px;
     transition: all 0.5s ease;
     width: 100%;
     padding: 15px;
