@@ -83,12 +83,73 @@
 
     <!-----------End of Sidebar-------------->
 
+<!-----------------------------------------------------------------------------------------------------------------------------------------------------Dashboard Content----------------------------------------------------------------------------------------------------------------------------------------------------->
+
     <div class="main-content">
         <div class="contain">
             <h1>Therapist Dashboard</h1>
             
         </div>
+
+
+
+<!---------------------------------------------Start Session Button-------------------------------------------------------------------->
+
+        <div class="therapybtn"> 
+            <button id='therapyBtn' type="button" class="btn"> Start Session</button>
+
+            <script>
+                const therapySessionBtn = document.getElementById("therapyBtn");
+
+                
+
+                therapySessionBtn.addEventListener("click", function(e) {
+                    console.log("The button was clicked");
+                });
+
+            </script>
+        </div>
+
+
+<!---------------------------------------------Profile Box-------------------------------------------------------------------->
+        <div class="TopSection">
+
+            <div class="box1">
+                <h2> Profile</h2>
+            </div>
+
+
+            <div class="box2">
+                <h2>Recent Therapy Sessions</h2>
+            </div>
+
+
+
+            <div class="box3">
+                <h2> Upcoming Sessions</h2>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
     </div>
+
+
+
 </body>
 
 <script>
@@ -100,4 +161,9 @@
     };
 
 </script>
+
 </html>
+
+
+
+
