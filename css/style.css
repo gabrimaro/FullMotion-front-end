@@ -20,7 +20,7 @@ body{
 }
 
 /*************      Login Page   *****************/
-.container{
+.login-container{
     position: relative;
     margin-top: 10%;
     width: 460px;
@@ -242,7 +242,98 @@ body{
     display: flex;
 }
 
-.main-content h1{
+.main-content .header {
     color: #fff;
     font-size: 50px;
 }
+
+/*************    Patient Dashboard    *****************/
+
+.patient-dash {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.patient-dash .container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.patient-dash .patient-info {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    gap: 10px;
+}
+
+.patient-dash h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.patient-dash i {
+    font-size: 12px;
+}
+
+.patient-dash hr {
+    border: 1px solid black;
+}
+
+.patient-dash .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.patient-dash .contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.patient-dash .contact i {
+    font-size: 16px;
+}
+
+.patient-dash .contact p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.patient-dash .appointments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.patient-dash .date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.patient-dash .patient-img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.patient-dash .sensor-section {
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.patient-dash .sensor-section td
