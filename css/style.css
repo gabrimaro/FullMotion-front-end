@@ -16,7 +16,8 @@ body{
     justify-content: center;
     font-family: "Montserrat", sans-serif;
     height: 100vh;
-    width: 100vw;
+    min-width: 100vw;
+    max-width: auto;
 }
 
 /*************      Login Page   *****************/
@@ -99,10 +100,6 @@ body{
 
 
 }
-
-
-
-
 
 /*************      Side Bar   *****************/
 
@@ -327,6 +324,13 @@ body{
     border-radius: 15px;
 }
 
+.patient-dash .sensors {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .patient-dash .sensor-section {
     width: 100%;
     border-radius: 20px;
@@ -336,4 +340,87 @@ body{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.patient-dash .sensor-section td
+.patient-dash .sensor-section table {
+    width: 100%;
+}
+
+.patient-dash .sensor-section td:nth-child(1) {
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.patient-dash .sensor-section td img {
+    height: 50px;
+    width: 100%;
+}
+
+.motion-popup, .posture-popup, .force-popup, .heart-rate-popup, .temp-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-dash .popup .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.patient-dash .popup .top i {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(124, 41, 38);
+}
+
+.patient-dash .popup table {
+    width: 100%;
+}
+
+.patient-dash .popup td:nth-child(1) {
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.patient-dash .popup td img {
+    height: 50px;
+    width: 100%;
+}
+
+.patient-dash .popup {
+    width: 80%;
+    border-radius: 20px;
+    padding: 20px;
+    background: #5ea9d2;
+    border: 1px solid rgb(148, 201, 230);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.patient-dash .popup tr {
+    height: 75px;
+}
+
+.close-motion-popup, .close-posture-popup, .close-force-popup, .close-heart-rate-popup, .close-temp-popup {
+    cursor: pointer;
+}
+
+.motion-button, .posture-button, .force-button, .heart-rate-button, .temp-button {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.motion-popup, .posture-popup, .force-popup, .heart-rate-popup, .temp-popup {
+    visibility: hidden;
+}
+.motion-popup.active, .posture-popup.active, .force-popup.active, .heart-rate-popup.active, .temp-popup.active {
+    visibility: visible;
+}
