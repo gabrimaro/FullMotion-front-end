@@ -83,6 +83,8 @@
 
     <!-----------End of Sidebar-------------->
 
+<!-----------------------------------------------------------------------------------------------------------------------------------------------------Dashboard Content----------------------------------------------------------------------------------------------------------------------------------------------------->
+
     <div class="main-content">
         <div class="patient-dash">
             <h1 class="header">Therapist Dashboard</h1>
@@ -91,7 +93,97 @@
 
             </div>
         </div>
+
+
+
+<!---------------------------------------------Therapist Dashboard-------------------------------------------------------------------->
+        <div class="dashSections">
+
+            <div class="box 1">
+
+                <div class="profile">
+                    <title>Profile</title>
+                    Profile
+                </div>
+            </div>
+
+
+            <div class="box 2">
+                <div class="sessions 1">
+                    <title>Recent Therapy Sessions</title>
+                    Recent Therapy Sessions
+                </div>
+            </div>
+
+
+
+            <div class="box 3">
+                <div class="sessions 2">
+                    <title> Upcoming Sessions</title>
+                    Upcoming Sessions
+                </div>
+            </div>
+
+            <div class="box 4">
+                <div class="bottom 1">
+                    <title> Previous Reports</title>
+                    Previous Reports
+                </div>
+            </div>
+
+
+            <div class="box 5">
+                <div class="bottom 2">
+                    <title>Sensor Health</title>
+                    Sensor Health
+                </div>
+            </div>
+
+
+            <div class="box6">
+                <div class="button">
+                    <title>Sensor Health</title>
+
+                    <div class="therapybtn">
+                        <a href="patients.html">
+                            <button id='therapyBtn' type="button" class="btn"> Start Session</button>
+                        </a>
+                        <script>
+                            const therapySessionBtn = document.getElementById("therapyBtn");
+            
+                            
+            
+                            therapySessionBtn.addEventListener("click", function(e) {
+                                console.log("The button was clicked");
+                            });
+            
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+       
+
+        </div>
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
     </div>
+
+
+
 </body>
 
 <script>
@@ -103,5 +195,6 @@
     };
 </script>
 
-
 </html>
+
+
