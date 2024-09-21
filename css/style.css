@@ -7,8 +7,8 @@
 }
 
 body{
-    background: url(../images/physicianLoginScreen_cropped.png) no-repeat;
-    background-size: cover;
+    background:  #5ea9d2; /**url(../images/physicianLoginScreen_cropped.png) no-repeat;**/
+    background-size: cover; 
     background-attachment: fixed;
     background-position-x: center;
     display: flex;
@@ -20,10 +20,22 @@ body{
     max-width: auto;
 }
 
+.login {
+
+    background: url(../images/physicianLoginScreen_cropped.png) no-repeat;
+    background-size: cover;
+    height: 100vh;
+    min-width: 100vw;
+    max-width: auto;
+
+}
+
+
 /*************      Login Page   *****************/
 .login-container{
     position: relative;
     margin-top: 10%;
+    margin-left: 40%;
     width: 460px;
     height: auto;
     background: rgba(255, 255, 255, 0.5);
@@ -431,7 +443,17 @@ body{
     
 }
 
+.patient-dash .Bbtn {
 
+    position: relative;
+    border-radius: 5px;
+    font-size: 1vh;
+    box-shadow: inset 0 1px 0 0 #3949AB;
+    width: 12vh;
+    height: 2vh;
+    float: right;
+
+}
 
 /**********************************************    Therapist Dashboard    ******************************************************/
 
@@ -530,20 +552,20 @@ body{
 
 /**************************************************  Patient List  ********************************************************************/
 
-table {
+.Patient-list table {
     border-collapse: collapse;
     width: 80%;
     margin: 100px;
 
   }
 
-  th, td {
+  .Patient-list th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
 
-  .Pbtn {
+ .Patient-list .Pbtn {
 
     position: relative;
     border-radius: 5px;
@@ -555,3 +577,4 @@ table {
     height: 2vh;
     
 }
+

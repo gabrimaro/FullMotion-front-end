@@ -7,22 +7,24 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1 class="label">Therapist Login</h1>
-        <form class="loginForm" action="dashboard.html" method="post" name="form" onsubmit="return validated()">
+    <div class="login">
+        <div class="login-container">
+            <h1 class="label">Therapist Login</h1>
+            <form class="loginForm" action="dashboard.html" method="post" name="form" onsubmit="return validated()">
 
-            <div class="font"> Username</div>
-            <input autocomplete="off" type="text" name="username"> 
-            <div id="noUsername">Please provide your username.</div>
+                <div class="font"> Username</div>
+                <input autocomplete="off" type="text" name="username"> 
+                <div id="noUsername">Please provide your username.</div>
 
-            <div class="font font2"> Password</div>
-            <input type="password" name="password">
-            <div id="noPassword">Please provide your password.</div>
+                <div class="font font2"> Password</div>
+                <input type="password" name="password">
+                <div id="noPassword">Please provide your password.</div>
 
-            <button type="submit">Login</button>
+                <button type="submit">Login</button>
 
-        </form>
+            </form>
 
+        </div>
     </div>
 
     <script src="../javascript/Login.js"></script>
