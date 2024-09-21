@@ -543,3 +543,15 @@ table {
     text-align: left;
   }
 
+  .Pbtn {
+
+    position: relative;
+    border-radius: 5px;
+    font-size: 1vh;
+    padding: 6px 2px;
+    box-shadow: inset 0 1px 0 0 #3949AB;
+    background-color:#ddd;
+    width: 4vh;
+    height: 2vh;
+    
+}
