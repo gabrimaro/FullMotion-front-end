@@ -123,6 +123,8 @@ body{
     background-color: #12171e;
     padding: 10px;
     transition: all 0.5s ease;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .sidebar .top {
@@ -252,8 +254,8 @@ body{
 }
 
 .main-content .header {
-    color: #fff;
-    font-size: 50px;
+    color: #fff !important;
+    font-size: 5vh !important;
 }
 
 /******************************************    Patient Profile    ******************************************/
@@ -266,16 +268,47 @@ body{
 
 .patient-dash .container {
     display: flex;
+    flex-grow: 1;
     flex-direction: row;
     height: 100%;
-    margin-top: 15px;
     gap: 15px;
+    overflow: hidden;
+    margin: -15px;
+    padding: 15px;
+}
+
+.patient-dash .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.patient-dash .top i {
+    font-size: 1.5vh;
+}
+
+.patient-dash .Bbtn {
+    border: none;
+    font-size: 1.5vh;
+    background-color: #b2d6e9;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.patient-dash .Bbtn:hover {
+    background-color: #b2d6e9;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .patient-dash .patient-info {
     display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
     flex-direction: column;
-    background-color: red;
     width: 200px;
     border-radius: 20px;
     padding: 10px;
@@ -283,15 +316,45 @@ body{
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     gap: 10px;
+    overflow: hidden;
+}
+
+.patient-dash .info {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
 }
 
 .patient-dash h1 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: black !important;
 }
 
 .patient-dash i {
     font-size: 12px;
+}
+
+.patient-dash .edit-notes {
+    position: sticky;
+    bottom: 12px;
+    font-size: 1.5vh;
+    cursor: pointer;
+    background-color: #b2d6e9;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 15px;
+}
+
+.patient-dash .edit-notes:hover {
+    border: none;
+    background-color: #b2d6e9;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .patient-dash hr {
@@ -336,11 +399,37 @@ body{
     border-radius: 15px;
 }
 
+.patient-dash .edit-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-dash .inner {
+    width: 80%;
+    border-radius: 20px;
+    padding: 20px;
+    background: #5ea9d2;
+    border: 1px solid rgb(148, 201, 230);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
 .patient-dash .sensors {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: -15px;
+    padding: 15px;
+    overflow-y: scroll;
+    gap: 15px;
 }
 
 .patient-dash .sensor-section {
@@ -356,6 +445,12 @@ body{
     width: 100%;
 }
 
+.patient-dash .sensor-section table, .patient-dash .sensor-section th, .patient-dash .sensor-section td, .patient-dash .popup table, .patient-dash .popup th, .patient-dash .popup td {
+    border-collapse: collapse;
+    border: none;
+    padding: 3px;
+}
+
 .patient-dash .sensor-section td:nth-child(1) {
     width: 100px;
     text-align: right;
@@ -367,7 +462,7 @@ body{
     width: 100%;
 }
 
-.motion-popup, .posture-popup, .force-popup, .heart-rate-popup, .temp-popup {
+.popup {
     position: absolute;
     top: 0;
     left: 0;
@@ -380,33 +475,34 @@ body{
     align-items: center;
 }
 
-.patient-dash .popup .top {
+.patient-dash .inner .top {
     display: flex;
     justify-content: space-between;
 }
 
-.patient-dash .popup .top i {
+.patient-dash .inner .top i {
     font-size: 24px;
     font-weight: 600;
     color: rgb(124, 41, 38);
 }
 
-.patient-dash .popup table {
+.patient-dash .inner table {
     width: 100%;
+    border-collapse: collapse;
 }
 
-.patient-dash .popup td:nth-child(1) {
+.patient-dash .inner td:nth-child(1) {
     width: 100px;
     text-align: right;
     padding-right: 10px;
 }
 
-.patient-dash .popup td img {
+.patient-dash .inner td img {
     height: 50px;
     width: 100%;
 }
 
-.patient-dash .popup {
+.patient-dash .inner {
     width: 80%;
     border-radius: 20px;
     padding: 20px;
@@ -415,44 +511,33 @@ body{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.patient-dash .popup tr {
+.patient-dash .inner tr {
     height: 75px;
 }
 
-.close-motion-popup, .close-posture-popup, .close-force-popup, .close-heart-rate-popup, .close-temp-popup {
+.close-button {
     cursor: pointer;
 }
 
-.motion-button, .posture-button, .force-button, .heart-rate-button, .temp-button {
-    background-color: rgba(255, 255, 255, 0.4);
+.patient-dash .more-button {
+    background-color: #b2d6e9;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     padding: 0 10px;
     cursor: pointer;
 }
 
-.motion-popup, .posture-popup, .force-popup, .heart-rate-popup, .temp-popup {
+.patient-dash .more-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.popup {
     visibility: hidden;
 }
-.motion-popup.active, .posture-popup.active, .force-popup.active, .heart-rate-popup.active, .temp-popup.active {
+
+.popup.active {
     visibility: visible;
-}
-
-.main-content h1{
-    color: #fff;
-    font-size: 5vh;
-    
-}
-
-.patient-dash .Bbtn {
-
-    position: relative;
-    border-radius: 5px;
-    font-size: 1vh;
-    box-shadow: inset 0 1px 0 0 #3949AB;
-    width: 12vh;
-    height: 2vh;
-    float: right;
-
 }
 
 /**********************************************    Therapist Dashboard    ******************************************************/
