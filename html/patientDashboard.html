@@ -85,61 +85,79 @@
 
     <div class="main-content">
         <div class="patient-dash">
-            <h1 class="header">Patient Profile</h1>
-            <h2><a href="patients.html">
-                <button id='PatientBtn' type="button" class="Bbtn"> Back to Patient List </button>
-            </a></h2>
+            <div class="top">
+                <h1 class="header">Patient Profile</h1>
+                <a href="patients.html">
+                    <button id='PatientBtn' type="button" class="Bbtn"><i class='bx bx-arrow-to-left'></i> Back to Patient List</button>
+                </a>
+            </div>
             
             <div class="container">
                 <div class="patient-info">
                     <img src="../images/blank_profile.webp" alt="" class="patient-img">
                     <h1>Jane Doe</h1>
-                    <div>
-                        <i>Age</i>
-                        <p>24</p>
-                    </div>
-                    <div>
-                        <i>Gender</i>
-                        <p>Female</p>
-                    </div>
-                    <div>
-                        <i>Date of Birth</i>
-                        <p>01/01/2000</p>
-                    </div>
-                    <div>
-                        <i>Occupation</i>
-                        <p>Accountant</p>
-                    </div>
-                    <hr>
-                    <div class="contact-info">
-                        <i>Contact Information</i>
-                        <div class="contact">
-                            <i class='bx bxs-envelope'></i>
-                            <p title="myemail@email.com">myemail@email.com</p>
+                    <div class="info">
+                        <div>
+                            <i>Age</i>
+                            <p>24</p>
                         </div>
-                        <div class="contact">
-                            <i class='bx bxs-phone'></i>
-                            <p>(757) 555-1234</p>
+                        <div>
+                            <i>Gender</i>
+                            <p>Female</p>
                         </div>
-                        <div class="contact">
-                            <i class='bx bx-mobile'></i>
-                            <p>(757) 555-6789</p>
+                        <div>
+                            <i>Date of Birth</i>
+                            <p>01/01/2000</p>
+                        </div>
+                        <div>
+                            <i>Occupation</i>
+                            <p>Accountant</p>
+                        </div>
+                        <hr>
+                        <div class="contact-info">
+                            <i>Contact Information</i>
+                            <div class="contact">
+                                <i class='bx bxs-envelope'></i>
+                                <p title="myemail@email.com">myemail@email.com</p>
+                            </div>
+                            <div class="contact">
+                                <i class='bx bxs-phone'></i>
+                                <p>(757) 555-1234</p>
+                            </div>
+                            <div class="contact">
+                                <i class='bx bx-mobile'></i>
+                                <p>(757) 555-6789</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="appointments">
+                            <i>Upcoming Appointments</i>
+                            <div class="date">
+                                <p>09/23/2024</p>
+                                <p>10:00am</p>
+                            </div>
+                            <div class="date">
+                                <p>10/21/2024</p>
+                                <p>10:00am</p>
+                            </div>
+                            <div class="date">
+                                <p>11/18/2024</p>
+                                <p>10:00am</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="patient-notes">
+                            <i>Notes</i>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non magna a dolor venenatis iaculis vel vitae ligula. Nulla pharetra urna quis ante pellentesque molestie. Sed vitae convallis mauris, a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non magna a dolor venenatis iaculis vel vitae ligula. Nulla pharetra urna quis ante pellentesque molestie. Sed vitae convallis mauris, a. </p>
+                            <i class='edit-notes bx bxs-pencil'></i>
                         </div>
                     </div>
-                    <hr>
-                    <div class="appointments">
-                        <i>Upcoming Appointments</i>
-                        <div class="date">
-                            <p>09/23/2024</p>
-                            <p>10:00am</p>
-                        </div>
-                        <div class="date">
-                            <p>10/21/2024</p>
-                            <p>10:00am</p>
-                        </div>
-                        <div class="date">
-                            <p>11/18/2024</p>
-                            <p>10:00am</p>
+                    <div class="popup edit-popup">
+                        <div class="inner">
+                            <div class="top">
+                                <h1>Edit Patient Info</h1>
+                                <i class='bx bxs-save close-button save-edit'></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -156,7 +174,7 @@
                                 <td><img src="../images/filler_chart.png" alt=""></td>
                             </tr>
                             <tr>
-                                <td><p class="motion-button">More...</p></td>
+                                <td><p class="more-button motion-button">More...</p></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -169,7 +187,7 @@
                                 <td><img src="../images/filler_chart.png" alt=""></td>
                             </tr>
                             <tr>
-                                <td><p class="posture-button">More...</p></td>
+                                <td><p class="more-button posture-button">More...</p></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -182,7 +200,7 @@
                                 <td><img src="../images/filler_chart.png" alt=""></td>
                             </tr>
                             <tr>
-                                <td><p class="force-button">More...</p></td>
+                                <td><p class="more-button force-button">More...</p></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -195,7 +213,7 @@
                                 <td><img src="../images/filler_chart.png" alt=""></td>
                             </tr>
                             <tr>
-                                <td><p class="heart-rate-button">More...</p></td>
+                                <td><p class="more-button heart-rate-button">More...</p></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -208,16 +226,16 @@
                                 <td><img src="../images/filler_chart.png" alt=""></td>
                             </tr>
                             <tr>
-                                <td><p class="temp-button">More...</p></td>
+                                <td><p class="more-button temp-button">More...</p></td>
                                 <td></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="motion-popup">
-                        <div class="popup">
+                    <div class="popup motion-popup">
+                        <div class="inner">
                             <div class="top">
                                 <h1>Motion</h1>
-                                <i class='bx bxs-message-square-x close-motion-popup'></i>
+                                <i class='bx bxs-message-square-x close-button close-motion-popup'></i>
                             </div>
                             <table>
                                 <tr>
@@ -243,11 +261,11 @@
                             </table>
                         </div>
                     </div>
-                    <div class="posture-popup">
-                        <div class="popup">
+                    <div class="popup posture-popup">
+                        <div class="inner">
                             <div class="top">
                                 <h1>Posture and Balance</h1>
-                                <i class='bx bxs-message-square-x close-posture-popup'></i>
+                                <i class='bx bxs-message-square-x close-button close-posture-popup'></i>
                             </div>
                             <table>
                                 <tr>
@@ -265,11 +283,11 @@
                             </table>
                         </div>
                     </div>
-                    <div class="force-popup">
-                        <div class="popup force">
+                    <div class="popup force-popup">
+                        <div class="inner">
                             <div class="top">
                                 <h1>Force and Pressure</h1>
-                                <i class='bx bxs-message-square-x close-force-popup'></i>
+                                <i class='bx bxs-message-square-x close-button close-force-popup'></i>
                             </div>
                             <table>
                                 <tr>
@@ -287,11 +305,11 @@
                             </table>
                         </div>
                     </div>
-                    <div class="heart-rate-popup">
-                        <div class="popup heart-rate">
+                    <div class="popup heart-rate-popup">
+                        <div class="inner">
                             <div class="top">
                                 <h1>Heart Rate</h1>
-                                <i class='bx bxs-message-square-x close-heart-rate-popup'></i>
+                                <i class='bx bxs-message-square-x close-button close-heart-rate-popup'></i>
                             </div>
                             <table>
                                 <tr>
@@ -309,11 +327,11 @@
                             </table>
                         </div>
                     </div>
-                    <div class="temp-popup">
-                        <div class="popup temp">
+                    <div class="popup temp-popup">
+                        <div class="inner">
                             <div class="top">
                                 <h1>Temperature and Sweat</h1>
-                                <i class='bx bxs-message-square-x close-temp-popup'></i>
+                                <i class='bx bxs-message-square-x close-button close-temp-popup'></i>
                             </div>
                             <table>
                                 <tr>
@@ -332,6 +350,20 @@
         </div>
     </div>
 </body>
+
+<script>
+    let edit_popup = document.querySelector(".edit-popup");
+    let edit_button = document.querySelector(".edit-notes");
+    let save_edit = document.querySelector(".save-edit");
+
+    edit_button.onclick = function() {
+        edit_popup.classList.toggle('active');
+    }
+
+    save_edit.onclick = function() {
+        edit_popup.classList.toggle('active');
+    }
+</script>
 
 <script>
     let button = document.querySelector('#button');
