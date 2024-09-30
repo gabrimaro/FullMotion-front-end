@@ -346,10 +346,108 @@
                         </div>
                     </div>
                 </div>
+                <div class="right">
+                    <div class="timer">
+                        <div class="live-time">
+                            <span class="digit" id="min">00</span>:
+                            <span class="digit" id="sec">00</span>:
+                            <span class="digit" id="ms">00</span>
+                        </div>
+                        <div class="start-stop">
+                            <button class="timer-start active"><i class='bx bx-play'></i></button>
+                            <button class="timer-stop"><i class='bx bx-stop'></i></button>
+                        </div>
+                    </div>
+                    <div class="notif-container">
+                        <h1>Alerts</h1>
+                        <div class="notif-scroll">
+                            <div class="alerts">
+                                <div class="single-alert">
+                                    <p class="time">10:03am</p>
+                                    <p>Notification text here.</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">9:59am</p>
+                                    <p>Angle bounds exceeded: <span id="bad">85°</span></p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                                <div class="single-alert">
+                                    <p class="time">0:00am</p>
+                                    <p>empty</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
+<script>
+    let start_btn = document.querySelector(".timer-start");
+    let stop_btn = document.querySelector(".timer-stop");
+
+    let minute = 0;
+    let second = 0;
+    let millisecond = 0;
+
+    start_btn.onclick = function() {
+        start_btn.classList.toggle('active');
+        stop_btn.classList.toggle('active');
+        timer = true;
+        stopwatch();
+    }
+
+    stop_btn.onclick = function() {
+        start_btn.classList.toggle('active');
+        stop_btn.classList.toggle('active');
+        timer = false;
+    }
+
+    function stopwatch() {
+        while (timer) {
+            second++;
+
+            document.getElementById("sec").innerHTML = second;
+        }
+    }
+</script>
 
 <script>
     let edit_popup = document.querySelector(".edit-popup");
