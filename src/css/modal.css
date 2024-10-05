@@ -19,12 +19,13 @@
     width: 30em;
 }
 
-.modal .Pbtn {
+.modal .btn {
     display: block;
-    margin: auto;
+    
 }
 
-.Pbtn {
+.btn {
+    margin: auto;
     margin-top: .5rem;
     border: none;
     background-color: #1d4ed8;
@@ -33,6 +34,7 @@
     border-radius: 10px;
     cursor: pointer;
     box-shadow:  0px 5px 5px #ccc;
+    
 }
 
 

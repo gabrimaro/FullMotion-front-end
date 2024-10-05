@@ -1,5 +1,5 @@
-import React from 'react'
-import "../css/modal.css"
+import React from 'react';
+import "../css/modal.css";
 
 
 export const Modal = () => {
@@ -22,11 +22,11 @@ export const Modal = () => {
                     <option value="inactive">Inactive</option>
                 </select>
             </div>
-            <button type="Psubmit" className='Pbtn'>Add Patient</button>
+            <button type="Psubmit" className='btn'>Add Patient</button>
         </form>
 
     </div>
 
   </div>
   )
-}
+};
