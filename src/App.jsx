@@ -1,23 +1,20 @@
-import { useState } from 'react';
-import { Modal } from './components/modal';
-import PatientList from './components/patientList';
-import './css/App.css';
+import './css/env.css'
+import './css/App.css'
+import Navbar from "./components/Navbar.jsx"
+import { Route, Routes } from 'react-router-dom'
+import Dashboard from './pages/Dashboard.jsx'
+import Patients from './pages/Patients.jsx'
+import PatientDashboard from './pages/PatientDashboard.jsx'
 
- function App() {
-  const [modelOpen, setModalOpen] = useState (false)
-
+export default function App() {
   return (
-    <>
-    <div className='App'>
-      
-      <PatientList />
-      <button className='btn' onClick={() => setModalOpen(true)}> Add Patient</button>
-      {modelOpen && (<Modal closeModal={()=> {setModalOpen(false);}} /> )}
-
+    <div class="wrapper">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/patients" element={<Patients />} />
+        <Route path="/patient_dashboard" element={<PatientDashboard />} />
+      </Routes>
     </div>
-    
-    </>
-  );
+  )
 }
-
-export default App;
