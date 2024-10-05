@@ -1,9 +1,23 @@
-import './css/App.css'
+import { useState } from 'react';
+import { Modal } from './components/modal';
+import PatientList from './components/patientList';
+import './css/App.css';
 
-export default function App() {
+ function App() {
+  const [modelOpen, setModalOpen] = useState (false)
+
   return (
     <>
-      <h1>Hello!</h1>
+    <div className='App'>
+      
+      <PatientList />
+      <button className='btn' onClick={() => setModalOpen(true)}> Add Patient</button>
+      {modelOpen && (<Modal closeModal={()=> {setModalOpen(false);}} /> )}
+
+    </div>
+    
     </>
-  )
+  );
 }
+
+export default App;
