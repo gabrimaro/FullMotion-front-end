@@ -1,0 +1,672 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background:  #5ea9d2; /**url(../../images/physicianLoginScreen_cropped.png) no-repeat;**/
+    background-size: cover; 
+    background-attachment: fixed;
+    background-position-x: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+    min-width: 100vw;
+    max-width: auto;
+}
+
+.login {
+
+    background: url(../../images/physicianLoginScreen.png) no-repeat;
+    background-size: cover;
+    height: 100vh;
+    min-width: 100vw;
+    max-width: auto;
+
+}
+
+
+/*************      Login Page   *****************/
+.login-container{
+    position: relative;
+    margin-top: 10%;
+    margin-left: 40%;
+    width: 460px;
+    height: auto;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.label{
+    padding: 20px 100px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #130f40;
+    white-space: nowrap;
+}
+
+.loginForm{
+
+    padding: 20px 50px;
+    
+}
+.loginForm .font{
+
+    font-size: 19px;
+    color: #130f40;
+    margin: 5px 0;
+
+}
+.loginForm input{
+
+    height: 40px;
+    width: 350px;
+    padding: 0 5px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid silver;
+
+}
+.loginForm .font2{
+    margin-top: 30px;
+}
+.loginForm button{
+    
+    margin: 40px 0 20px 15px;
+    height: 45px;
+    width: 325px;
+    font-size: 20px;
+    color:white;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #22179a;
+    border-radius: 15px;
+    border: 1px solid #22179a;
+    transition: .5s;
+}
+.loginForm button:hover{
+    background: #3949AB;
+}
+.loginForm #noUsername,
+.loginForm #noPassword{
+
+    margin-top: 5px;
+    width: 345px;
+    font-size: 16px;
+    color: #C62828;
+    background: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 1px solid #EF9A9A;
+    display: none;
+
+
+}
+
+/*************      Side Bar   *****************/
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100px;
+    background-color: #12171e;
+    padding: 10px;
+    transition: all 0.5s ease;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.sidebar .top {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sidebar #button{
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 50px;
+}
+
+.sidebar .top .logo {
+    display: none;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.userPFP {
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid #eee;   
+}
+
+.user {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    display: none;
+    color: white;
+}
+
+.nav-list {
+    margin-top: 25px;
+    
+}
+
+.nav-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    text-decoration: none;
+    gap: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.nav-list li a:hover {
+    background-color: #fff;
+    color: #12171e;
+}
+
+.nav-list i {
+    font-size: 25px;
+}
+
+.nav-item {
+    display: none;
+}
+
+.tooltip {
+    position: relative;
+    top: -45px;
+    left: 100px;
+    visibility: hidden;
+    background-color: #fff;
+    color: #12171e;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.nav-list li:hover .tooltip {
+    visibility: visible;
+}
+
+.sidebar.active .nav-list li:hover .tooltip {
+    visibility: hidden;
+}
+
+.sidebar.active {
+    width: 250px;
+}
+
+.sidebar.active .top {
+    justify-content: space-between;
+}
+
+.sidebar.active .top .logo {
+    display: block;
+}
+
+.sidebar.active .user-name {
+    display: block;
+}
+
+.sidebar.active .nav-item {
+    display: inline;
+}
+
+.sidebar.active .nav-list li a {
+    padding-left: 20px;
+    justify-content: left;
+}
+
+/*************      Dashboard Content   *****************/
+.main-content {
+    background-color: #5ea9d2;
+    height: 100%;
+    transition: all 0.5s ease;
+    width: 100%;
+    padding: 15px;
+}
+
+.contain {
+    display: flex;
+}
+
+.main-content .header {
+    color: #fff !important;
+    font-size: 5vh !important;
+}
+
+/******************************************    Patient Profile    ******************************************/
+
+.patient-dash {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.patient-dash .container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    height: 100%;
+    gap: 15px;
+    overflow: hidden;
+    margin: -15px;
+    padding: 15px;
+}
+
+.patient-dash .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.patient-dash .top i {
+    font-size: 1.5vh;
+}
+
+.patient-dash .Bbtn {
+    border: none;
+    font-size: 1.5vh;
+    background-color: #b2d6e9;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.patient-dash .Bbtn:hover {
+    background-color: #b2d6e9;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.patient-dash .patient-info {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: column;
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    gap: 10px;
+    overflow: hidden;
+}
+
+.patient-dash .info {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+}
+
+.patient-dash h1 {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: black !important;
+}
+
+.patient-dash i {
+    font-size: 12px;
+}
+
+.patient-dash .edit-notes {
+    position: sticky;
+    bottom: 12px;
+    font-size: 1.5vh;
+    cursor: pointer;
+    background-color: #b2d6e9;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 15px;
+    width: fit-content;
+}
+
+.patient-dash .edit-notes:hover {
+    border: none;
+    background-color: #b2d6e9;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4),
+                5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.patient-dash hr {
+    border: 1px solid black;
+}
+
+.patient-dash .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.patient-dash .patient-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.patient-dash .contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.patient-dash .contact i {
+    font-size: 16px;
+}
+
+.patient-dash .contact p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.patient-dash .appointments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.patient-dash .date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.patient-dash .patient-img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.patient-dash .edit-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-dash .inner {
+    width: 80%;
+    border-radius: 20px;
+    padding: 20px;
+    background: #5ea9d2;
+    border: 1px solid rgb(148, 201, 230);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.patient-dash .sensors {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: -15px;
+    padding: 15px;
+    overflow-y: scroll;
+    gap: 15px;
+}
+
+.patient-dash .sensor-section {
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.patient-dash .sensor-section table {
+    width: 100%;
+}
+
+.patient-dash .sensor-section table, .patient-dash .sensor-section th, .patient-dash .sensor-section td, .patient-dash .popup table, .patient-dash .popup th, .patient-dash .popup td {
+    border-collapse: collapse;
+    border: none;
+    padding: 3px;
+}
+
+.patient-dash .sensor-section td:nth-child(1) {
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.patient-dash .sensor-section td img {
+    height: 50px;
+    width: 100%;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-dash .inner .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.patient-dash .inner .top i {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(124, 41, 38);
+}
+
+.patient-dash .inner table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.patient-dash .inner td:nth-child(1) {
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.patient-dash .inner td img {
+    height: 50px;
+    width: 100%;
+}
+
+.patient-dash .inner {
+    width: 80%;
+    border-radius: 20px;
+    padding: 20px;
+    background: #5ea9d2;
+    border: 1px solid rgb(148, 201, 230);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.patient-dash .inner tr {
+    height: 75px;
+}
+
+.close-button {
+    cursor: pointer;
+}
+
+.patient-dash .more-button {
+    background-color: #b2d6e9;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.patient-dash .more-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.popup {
+    visibility: hidden;
+}
+
+.popup.active {
+    visibility: visible;
+}
+
+/**********************************************    Therapist Dashboard    ******************************************************/
+
+/***********Session Button ********/
+
+.btn {
+
+    position: relative;
+    border-radius: 5px;
+    font-size: 3vh;
+    padding: 6px 12px;
+    box-shadow: inset 0 1px 0 0 #3949AB;
+    width: 20vh;
+    height: 10vh;
+    
+}
+
+/**************Top Section of Dashboard*****************/
+.dashSections{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+.dashSections{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-top: 1px;
+        
+}
+
+.box {
+   
+    background: linear-gradient(#47acd4a1, #3f94b6da);
+    color: #fff;
+    font-size: 3vh;
+    text-align: center;
+    border-radius: 10px;
+    margin: 7px;
+    border: 1px solid #000000;
+
+
+
+}
+
+
+.profile{
+
+    height: 35vh;
+    width: 40vh;
+    border-radius: 5%;
+    margin-top: 15px;
+      
+   
+}
+
+.sessions{
+
+    height: 35vh;
+    width: 65vh;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 5%;
+    margin-top: 15px;
+
+
+}
+
+
+.bottom{
+
+    height: 40vh;
+    width: 65vh;
+    border-radius: 5%;
+    margin-top: 15px;
+
+}
+
+.button{
+
+    
+    width: 25vh;
+    border-radius: 5%;
+    margin-top: 55px;
+    margin-right: 25px;
+
+}
+
+
+/**************************************************  Patient List  ********************************************************************/
+
+.Patient-list table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 100px;
+
+  }
+
+  .Patient-list th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+ .Patient-list .Pbtn {
+
+    position: relative;
+    border-radius: 5px;
+    font-size: 1vh;
+    padding: 6px 2px;
+    box-shadow: inset 0 1px 0 0 #3949AB;
+    background-color:#ddd;
+    width: 4vh;
+    height: 2vh;
+    
+}
