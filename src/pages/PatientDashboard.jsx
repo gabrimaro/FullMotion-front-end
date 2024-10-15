@@ -4,6 +4,7 @@ import blank_profile from "../images/blank_profile.webp"
 import DataContainer from '../components/DataContainer'
 import SensorData from '../components/SensorData.jsx'
 import NotifCenter from '../components/NotifCenter.jsx'
+import Timer from '../components/Timer.jsx'
 
 export default function PatientDashboard() {
     return (
@@ -102,7 +103,10 @@ export default function PatientDashboard() {
                 </DataContainer>
                 <DataContainer className='data temp' title='Temperature and Sweat' />
             </div>
-            <NotifCenter />
+            <div className="right">
+                <Timer />
+                <NotifCenter />
+            </div>
         </div>
     )
 }

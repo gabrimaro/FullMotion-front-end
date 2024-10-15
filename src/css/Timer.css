@@ -1,0 +1,35 @@
+.display {
+    font-family: "Roboto Mono", sans-serif;
+    font-size: 45px;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.controls button {
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    background-color: var(--light-accent);
+}
+
+.controls button i {
+    font-size: 24px;
+}
+
+.controls .start-button {
+    color: rgb(28, 124, 28);
+}
+
+.controls .stop-button {
+    color: rgb(156, 64, 64);
+}
+
+.controls .reset-button {
+    color: rgb(34, 89, 161);
+}
