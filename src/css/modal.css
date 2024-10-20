@@ -21,20 +21,22 @@
 
 .modal .btn {
     display: block;
+    background-color: #1d4ed8;
+
     
 }
 
 .btn {
     margin: auto;
-    margin-top: .5rem;
     border: none;
-    background-color: #1d4ed8;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 10px;
     cursor: pointer;
     box-shadow:  0px 5px 5px #ccc;
+    background-color: #1d4ed8;
     
+
 }
 
 
