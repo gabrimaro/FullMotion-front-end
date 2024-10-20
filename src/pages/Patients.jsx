@@ -10,8 +10,8 @@ export default function Patients() {
 
     //Storafe for patient data
     const [rows, setRows] = useState([ //can have empty for demonstartion. just sample data for testing
-        {name: "Jane Doe", number: "000-000-0000", status:"active"}, 
-        {name: "John Adams", number: "111-111-1111", status:"active"}
+        {profile: "click", name: "Jane Doe", number: "000-000-0000", status:"active"}, 
+        {profile: "click", name: "John Adams", number: "111-111-1111", status:"active"}
     ]);
 
     const [rowToEdit, setRowToEdit] = useState(null);
@@ -40,12 +40,13 @@ export default function Patients() {
 
     return (
 
-        <>
-            <h1>Patients</h1>
-            <a href="/patient_dashboard">to patient dash</a>
+        <div className='patientList'>
 
+            <button className='pList-btn' onClick={() => setModalOpen(true)}> 
+                <div className='btn' >Add Patient</div>
+            </button>
             <PatientList rows={rows} deletePatient={deleteRow} editRow={handleEditRow}/>
-            <button className='btn' onClick={() => setModalOpen(true)}> Add Patient</button>
+            
             {modalOpen && (
                 <Modal 
                     closeModal={()=> {
@@ -59,6 +60,6 @@ export default function Patients() {
 
 
 
-        </>
+        </div>
     )
 }

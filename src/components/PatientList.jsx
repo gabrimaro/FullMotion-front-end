@@ -10,6 +10,7 @@ export const PatientList = ({ rows, deletePatient, editRow }) => {
         <table className='Ptable'>
             <thead>
                 <tr>
+                    <th> </th>
                     <th className='expand'>Name</th>
                     <th>Phone Number</th>
                     <th>Status</th>
@@ -22,6 +23,11 @@ export const PatientList = ({ rows, deletePatient, editRow }) => {
                     const statusText = row.status.charAt(0).toUpperCase() + row.status.slice(1);
                     return (
                         <tr key={idx}>
+                            <td>
+                                <div className='pProfile-btn' onClick={() => window.location.href = "/patient_dashboard"}>
+                                        Profile
+                                </div>
+                            </td>
                             <td>{row.name}</td>
                             <td className='pnumber'>{row.number}</td>
                             <td> 
