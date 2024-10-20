@@ -1,6 +1,5 @@
-import {useState, useEffect, useRef} from 'react';
-import '../css/Timer.css'
-import { callback } from 'chart.js/helpers';
+import { useEffect, useRef, useState } from 'react';
+import '../css/Timer.css';
 
 export default function Timer ({className='Timer'}) {
     const style = {
