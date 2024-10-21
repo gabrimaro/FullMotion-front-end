@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from '../components/modal';
 import { PatientList } from '../components/patientList';
 import '../css/modal.css';
@@ -7,17 +7,47 @@ import '../css/patientList.css';
 
 export default function Patients() {
     const [modalOpen, setModalOpen] = useState(false)
-
-    //Storafe for patient data
-    const [rows, setRows] = useState([ //can have empty for demonstartion. just sample data for testing
-        {profile: "click", name: "Jane Doe", number: "000-000-0000", status:"active"}, 
-        {profile: "click", name: "John Adams", number: "111-111-1111", status:"active"}
-    ]);
-
+    const [rows, setRows] = useState([]); ////Storage for patient data -initialize as empty array to fetch from API
     const [rowToEdit, setRowToEdit] = useState(null);
 
-    const deleteRow = (targetIndex) => {
-        setRows(rows.filter((_, idx) => idx !== targetIndex));
+    // fetch existing patients from backend 
+    useEffect(() => {
+        const fetchPatients = async () => {
+            try {
+                const response = await fetch('/api/patient');
+                if (response.ok) {
+                    const data = await response.json();
+                    setRows(data);
+                } else {
+                    console.error('Error fetching patient data');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchPatients();
+    }, []);
+
+
+    const deleteRow = async (targetIndex) => { //remove patient from list and database
+        const patientId = rows[targetIndex].id; // Assume you have an id for each patient
+    
+        try {
+            const response = await fetch(`/api/patient/${patientId}`, {
+            method: 'DELETE',
+        });
+        
+        if (response.ok) {
+            setRows(rows.filter((_, idx) => idx !== targetIndex)); // Update local state
+        }   
+        else {
+            console.error('Error deleting patient data');
+        }
+        } 
+        catch (error) {
+        console.error('Error:', error);
+        }
     };
 
     const handleEditRow = (idx) => {

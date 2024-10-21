@@ -3,88 +3,137 @@ import React, { useState } from 'react';
 import "../css/modal.css";
 
 
-export const Modal = ({closeModal, onSubmit, defaultValue}) => {
 
-    const [formState, setFormState] = useState (
-        defaultValue || { //puts the original data in the edit modal
-        name: "",
-        number: "",
-        status: "active",
-    });
 
-    //error messages
-    const [errors, setError] = useState("")
+export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
 
-    //confirm inputs
+    const [formState, setFormState] = useState(
+        defaultValue || { 
+            name: "",
+            number: "",
+            status: "active",
+        }
+    );
+
+    // error messages and loading state
+    const [errors, setErrors] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    // validate inputs
     const validateForm = () => {
-        if(formState.name && formState.number && formState.status){
-            setError("")
+        if (formState.name && formState.number && formState.status) {
+            setErrors(""); 
             return true;
+
         } 
         else {
-            let errorFields = [];
-            for(const [key, value] of Object.entries(formState)){
-                if(!value){
-                    errorFields.push(key)
+            const errorFields = [];
+        
+            for (const [key, value] of Object.entries(formState)) {
+                if (!value) {
+                    errorFields.push(key);
                 }
             }
-            setError(errorFields.join(" and "));
+
+            setErrors(errorFields.join(" and "));
+
             return false;
         }
-    }
+    };
 
-    const handleChange = (e) => {  
+    const handleChange = (e) => {
         setFormState({
             ...formState,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value, 
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); //so page does not refresh each time
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // no page reload
 
-        //check for valid inputs
+
         if (!validateForm()) return;
 
-        onSubmit(formState)
-        closeModal();
+        setLoading(true); 
+        try {
+            const response = await fetch('/api/patient', { //send post request
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Send data as JSON
+                },
+                body: JSON.stringify(formState), // convert formstate to JSON 
+            });
+
+
+            if (response.ok) {
+                console.log('Patient data saved successfully');
+                setFormState({ name: '', number: '', status: 'active' });
+                closeModal(); // close modal on successful submission
+            } 
+            else {
+                console.error('Error saving patient data');
+                setErrors('Error saving patient data');
+            }
+        }  
+    
+        catch (error) {
+            console.error('Error:', error);
+            setErrors('Unable to submit form');
+        } 
+        finally {
+            setLoading(false); // reset loading state
+        }
     };
 
+    return (
+    <div
+        className='modalContainer' // if clicked outside of modal it will close it
+        onClick={(e) => {
+            if (e.target.className === "modalContainer") closeModal();
+      } }
+    >
+        <div className='modal'>
+            <form onSubmit={handleSubmit}>
+                <div className='form-opt'>
+                    <label htmlFor='name'>Patient Full Name</label>
+                    <input
+                    name='name'
+                    value={formState.name}
+                    onChange={handleChange}
+                    required
+                    />
+                </div>
 
-  return (
-  <div className='modalContainer' //if clicked outside of modal it will close it
-    onClick={(e) =>{
-        if(e.target.className === "modalContainer") closeModal();
-    }}
-  >
+                <div className='form-opt'>
+                    <label htmlFor='number'>Patient Phone Number</label>
+                    <input
+                    name='number'
+                    value={formState.number}
+                    onChange={handleChange}
+                    required
+                    />
+                </div>
 
+                <div className='form-opt'>
+                    <label htmlFor='status'>Status</label>
+                    <select name='status' value={formState.status} onChange={handleChange}>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
 
+                {errors && <div className='error'>{` ${errors}`}</div>}
+                
+                <button
+                    type="submit"
+                    className='btn'
+                    disabled={loading} // disable button during loading
+                >
+                    {loading ? 'Submitting...' : 'Submit'}
+                </button>
 
-    <div className='modal'>
-        <form>
-            <div className='form-opt'>
-                <label htmlFor='name'>Patient Full Name</label>
-                <input name='name' value={formState.name} onChange={handleChange}/>
-            </div>
-            <div className='form-opt'>
-                <label htmlFor='number'>Patient Phone Number</label>
-                <input name='number' value={formState.number} onChange={handleChange}/>
-            </div>
-            <div className='form-opt'>
-                <label htmlFor='status'>Status</label>
-                <select name='status' value={formState.status} onChange={handleChange}>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
-            </div>
-            {errors && <div className='error'>{`Please include patient ${errors}`}</div>}
-            <button type="submit" className='btn' onClick={handleSubmit}>
-                Submit
-            </button>
-        </form>
-
+            </form>
+      </div>
     </div>
-
-  </div>
-  )
+  );
 };
