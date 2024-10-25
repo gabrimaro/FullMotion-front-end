@@ -5,13 +5,17 @@ import { Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard.jsx'
 import Patients from './pages/Patients.jsx'
 import PatientDashboard from './pages/PatientDashboard.jsx'
+import LoginHandler from './pages/LoginHandler.jsx'
+import RegisterHandler from './pages/RegisterHandler.jsx'
 
 export default function App() {
   return (
     <div class="wrapper">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<LoginHandler />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/register" element={<RegisterHandler />} />
         <Route path="/patients" element={<Patients />} />
         <Route path="/patient_dashboard" element={<PatientDashboard />} />
       </Routes>
