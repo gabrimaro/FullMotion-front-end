@@ -13,8 +13,8 @@ export default function App() {
     <div class="wrapper">
       <Navbar />
       <Routes>
-      <Route path="/" element={<LoginHandler />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<LoginHandler />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/register" element={<RegisterHandler />} />
         <Route path="/patients" element={<Patients />} />
         <Route path="/patient_dashboard" element={<PatientDashboard />} />

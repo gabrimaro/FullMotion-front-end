@@ -19,7 +19,7 @@ export default function LoginHandler({setSuccess}) {
                 }
             );
 
-        window.location.href = '/'
+        window.location.href = '/dashboard'
         
         } catch (err) {
             if (!err?.response) {
