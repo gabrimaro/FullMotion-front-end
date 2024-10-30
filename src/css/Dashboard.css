@@ -131,7 +131,8 @@
     border-radius: 10px;
     background-color: #777;
     width: 50px;
-    margin-top: 10%;
+    margin-top: 20px;
+
 }
 .logout-btn:hover {
     background-color: #b6afaf;
