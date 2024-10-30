@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import {redirect} from 'react-router-dom'
 import Axios from "axios";
 import '../css/Login.css'
 
@@ -19,7 +20,7 @@ export default function LoginHandler({setSuccess}) {
                 }
             );
 
-        window.location.href = '/dashboard'
+        return redirect('/dashboard')
         
         } catch (err) {
             if (!err?.response) {
