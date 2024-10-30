@@ -20,7 +20,7 @@ export default function LoginHandler({setSuccess}) {
                 }
             );
 
-        return redirect('/dashboard')
+        return redirect('/')
         
         } catch (err) {
             if (!err?.response) {
