@@ -1,6 +1,6 @@
-import "../css/Navbar.css"
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import pfp from '../assets/pfp.jpg';
+import "../css/Navbar.css";
 
 export default function Navbar() {
     return (
@@ -23,7 +23,7 @@ export default function Navbar() {
                     <li class="nav-item">
                         <NavLink to="/messages" className="nav-link"><i class="bx bxs-message-dots"></i><span className="nav-text">Messages</span></NavLink>
                     </li>
-                    <li><NavLink to="/profile"><img src={pfp} alt="me" class="userPFP"/></NavLink></li>
+                    <li><NavLink to="/"><img src={pfp} alt="me" class="userPFP"/></NavLink></li>
                 </ul>
             </nav>
         </>
