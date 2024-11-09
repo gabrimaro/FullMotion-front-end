@@ -44,7 +44,18 @@ export default function Dashboard() {
                 <div className="contents">
                     <div className={`${state===1 ? 'content active-content' : 'content'}`}>
                         <h2>Overview</h2>
-                        <p>Location: </p>
+                        <h3>Specialization: Orthopedic</h3>
+                        <h3>Location: Norfolk Virginia</h3>
+                        <h3>Office Hours:</h3>
+                            <p>Monday: 9:00AM - 5:00PM</p>
+                            <p>Tuesday: 9:00AM - 5:00PM</p>
+                            <p>Wednesday: 9:00AM - 5:00PM</p>
+                            <p>Thursday: 9:00AM - 5:00PM</p>
+                            <p>Friday: 9:00AM - 5:00PM</p>
+                            <p>Saturday: 9:00AM - 2:00PM</p>
+                            <p>Sunday: Closed</p>
+
+
                     </div>
                     <div className={`${state===2 ? 'content active-content' : 'content'}`}>
                         <h2>Personal Details</h2>
