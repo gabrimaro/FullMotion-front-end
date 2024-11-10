@@ -1,10 +1,12 @@
-import './css/env.css'
-import './css/App.css'
-import Navbar from "./components/Navbar.jsx"
 import { Route, Routes } from 'react-router-dom'
+import Navbar from "./components/Navbar.jsx"
+import './css/App.css'
+import './css/env.css'
 import Dashboard from './pages/Dashboard.jsx'
-import Patients from './pages/Patients.jsx'
+import Notifications from './pages/Notifications.jsx'
 import PatientDashboard from './pages/PatientDashboard.jsx'
+import Patients from './pages/Patients.jsx'
+
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/patients" element={<Patients />} />
         <Route path="/patient_dashboard" element={<PatientDashboard />} />
+        <Route path="/notifications" element={<Notifications />} />
+
       </Routes>
     </div>
   )

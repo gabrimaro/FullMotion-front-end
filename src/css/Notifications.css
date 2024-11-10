@@ -1,0 +1,52 @@
+.notifs {
+    background: var(--light-bg);
+    margin: 0;
+    justify-content: center;
+}
+
+h1 {
+    margin-top: 25px;
+    margin-left: 25px;
+
+}
+
+
+.notifsList{
+    box-sizing: border-box;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    float: none;
+    margin-top: 3%;
+    margin-left: 5%;
+    
+}
+
+.notifTable{
+    background-color: var(--panel);
+    display: block;
+    overflow: hidden;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-radius: 10px;
+    max-width: 95%;
+    margin-top: 0;
+    
+}
+
+.notifTable thead {
+    background-color: var(--dark-accent);
+}
+
+.notifTable th, 
+.notifTable td {
+    padding: 0.8rem;
+    text-align: center;
+    width: 20%;
+}
+.notifTable td {
+    font-size: 15px;
+}
