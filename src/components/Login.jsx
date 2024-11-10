@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import {redirect} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import Axios from "axios";
 import '../css/Login.css'
 
@@ -20,7 +20,7 @@ export default function LoginHandler({setSuccess}) {
                 }
             );
 
-        return redirect('/')
+        useNavigate('/', replace=true)
         
         } catch (err) {
             if (!err?.response) {
