@@ -1,0 +1,142 @@
+.tContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-bg);
+    height: 100%;
+    width: 100%;
+}
+
+.tProfile {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: var(--light-bg);
+    flex: .5;
+    margin-bottom: 10px;
+
+}
+
+.pfp {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    padding: 5px;
+    margin-top: 10px;
+
+}
+
+.Tname {
+    background-color: var(--dark-accent);
+    flex: 1;
+}
+
+.tDetails{
+    flex-grow: 1;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: var(--dark-accent);
+    border: 2px solid gray;
+    margin: 10px;
+}
+
+.tabs{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab{
+    background: #ccc;
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 3px solid gray;
+    border-top: none;
+    cursor: pointer;
+    position: relative;
+    
+}
+
+.active-tab {
+
+    border: none;
+    background: var(--dark-accent);
+}
+
+.active-tab::after{
+    border-top: 2px solid gray;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: initial;
+    animation: new 0.5s;
+}
+
+@keyframes new{
+    from{
+        top: 50px;
+        left: 0;
+        right: 0;
+        background: gray;
+    }
+
+    to{
+        top: 0px;
+        left: 0;
+        right: 0;
+        border-top: 2px solid grey;
+    }
+}
+
+.contents{
+    position: relative;
+}
+
+.content {
+    display: none;
+    position: relative;
+}
+
+.active-content {
+    display: block;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-right: 10px;
+    transition: all 1s ease-in-out;
+    animation: example 0.3s;
+}
+
+
+@keyframes example{
+    from{
+        margin: 0;
+    }
+
+    to{
+        margin-left: 10px;
+    }
+}
+
+
+.logout-btn {
+    font-size: 10px;
+    border: none;
+    color: white;
+    padding: 0.5rem .5rem;
+    border-radius: 10px;
+    background-color: #777;
+    width: 50px;
+    margin-top: 20px;
+
+}
+.logout-btn:hover {
+    background-color: #b6afaf;
+    cursor: pointer;
+    box-shadow:  0px 5px 5px #ccc;
+
+}

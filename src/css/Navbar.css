@@ -1,0 +1,49 @@
+.nav-bar {
+    background-color: var(--dark-bg);
+}
+
+.nav-bar ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px ;
+}
+
+.nav-bar ul li {
+    font-size: 24px;
+    list-style: none;
+    border-bottom: 5px solid var(--dark-bg);
+    border-top: 5px solid var(--dark-bg);
+    color: var(--light-text);
+}
+
+.nav-bar .nav-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 25px;
+}
+
+.nav-bar ul li.nav-item:hover {
+    border-bottom-color: var(--light-accent);
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: var(--light-text);
+}
+
+.nav-bar .logo {
+    font-size: 20px;
+}
+
+.nav-bar .userPFP {
+    width: 50px;
+    border-radius: 100%;
+}
+
+.nav-bar .nav-text {
+    font-size: 16px;
+}

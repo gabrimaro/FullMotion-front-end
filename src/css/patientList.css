@@ -1,0 +1,115 @@
+.patientList {
+    background-color: var(--light-bg);
+    margin: 0;
+    justify-content: center;
+
+}
+
+
+.PatientTable{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    float: none;
+    margin-top: 8%;
+    margin-left: 20%;
+
+}
+
+
+.Ptable{
+    background-color: var(--panel);
+    display: block;
+    overflow: hidden;
+    table-layout: fixed;
+    border-collapse: collapse;
+    box-shadow: 0 10px 10px #ccc;
+    border-radius: 10px;
+    white-space: nowrap;
+    width: 90em;
+    max-width: 65%;
+    margin-top: 0;
+    overflow-x: auto;
+    
+
+}
+
+.Ptable thead {
+    background-color: #ccc;
+    color: var(--dark-text);
+}
+
+.Ptable th, 
+.Ptable td {
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.Ptable td {
+    border-top: 0.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Ptable tbody tr:hover{
+    background-color: var(--dark-accent);
+}
+
+.expand{
+    width: 100%;
+}
+
+.label {
+    border-radius: 3px;
+    padding: 0.3rem;
+    color: white;
+}
+.label-inactive {
+    background-color: #777;
+}
+.label-active {
+    background-color: #42a942;
+}
+.actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.actions svg {
+    cursor: pointer;
+}
+
+.delete-btn {
+    color: #e10d05;
+}
+
+.pProfile-btn {
+    font-size: 10px;
+    margin-top: .5rem;
+    border: none;
+    color: white;
+    padding: 0.5rem .5rem;
+    border-radius: 10px;
+    background-color: #777;
+}
+.pProfile-btn:hover {
+    background-color: #b6afaf;
+    cursor: pointer;
+    box-shadow:  0px 5px 5px #ccc;
+
+}
+
+.pList-btn {
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+}
