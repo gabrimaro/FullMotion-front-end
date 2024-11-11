@@ -49,23 +49,25 @@ export default function Dashboard() {
                         <h3>Location: </h3>
                             <p>Norfolk Virginia </p>
                         <h3>Office Hours:</h3>
-                            <p>Monday: 9:00AM - 5:00PM</p>
-                            <p>Tuesday: 9:00AM - 5:00PM</p>
-                            <p>Wednesday: 9:00AM - 5:00PM</p>
-                            <p>Thursday: 9:00AM - 5:00PM</p>
-                            <p>Friday: 9:00AM - 5:00PM</p>
-                            <p>Saturday: 9:00AM - 2:00PM</p>
-                            <p>Sunday: Closed</p>
+                            <p>Monday - Friday:  9:00AM - 5:00PM</p>
+                            <p>Saturday:     9:00AM - 2:00PM</p>
+                            <p>Sunday:     Closed</p>
 
 
                     </div>
                     <div className={`${state===2 ? 'content active-content' : 'content'}`}>
                         <h2>Personal Details</h2>
                         <h3>Full Name:  </h3>
-                        <p>Dr. Johnson Johnson</p>
+                            <p>Dr. Johnson Johnson</p>
+                        <h3>Phone Number:  </h3>
+                            <p> (757) 123 - 4567</p>
+                        <h3>Email Address:  </h3>
+                            <p> DrJohnsonJ@gmail.com </p>
+
                     </div>
                     <div className={`${state===3 ? 'content active-content' : 'content'}`}>
                         <h2>Settings</h2>
+ 
                         <div className='logout-btn' onClick={() => window.location.href = "logout"}>
                                 Logout
                         </div>

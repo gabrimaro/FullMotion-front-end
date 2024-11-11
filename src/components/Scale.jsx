@@ -94,10 +94,7 @@ export const Scale = () => {
       y: {
         min: 0,
         max: 100,
-        title: {
-          display: true,
-          text: 'Data',
-        },
+
       },
     },
   };
