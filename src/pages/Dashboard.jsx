@@ -44,8 +44,10 @@ export default function Dashboard() {
                 <div className="contents">
                     <div className={`${state===1 ? 'content active-content' : 'content'}`}>
                         <h2>Overview</h2>
-                        <h3>Specialization: Orthopedic</h3>
-                        <h3>Location: Norfolk Virginia</h3>
+                        <h3>Specialization: </h3>
+                            <p>Orthopedic</p>
+                        <h3>Location: </h3>
+                            <p>Norfolk Virginia </p>
                         <h3>Office Hours:</h3>
                             <p>Monday: 9:00AM - 5:00PM</p>
                             <p>Tuesday: 9:00AM - 5:00PM</p>
@@ -59,7 +61,8 @@ export default function Dashboard() {
                     </div>
                     <div className={`${state===2 ? 'content active-content' : 'content'}`}>
                         <h2>Personal Details</h2>
-                        <p>Full Name:  </p>
+                        <h3>Full Name:  </h3>
+                        <p>Dr. Johnson Johnson</p>
                     </div>
                     <div className={`${state===3 ? 'content active-content' : 'content'}`}>
                         <h2>Settings</h2>
