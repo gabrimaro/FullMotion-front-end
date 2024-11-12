@@ -9,6 +9,8 @@ import Notifications from './pages/Notifications.jsx'
 import PatientDashboard from './pages/PatientDashboard.jsx'
 import Patients from './pages/Patients.jsx'
 import RegisterHandler from './pages/RegisterHandler.jsx'
+import RequireAuth from './auth/RequireAuth.jsx'
+import Messages from './pages/Messages.jsx'
 
 
 export default function App() {
@@ -17,12 +19,15 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/login" element={<LoginHandler />} />
-        <Route path="/" element={<Dashboard />} />
         <Route path="/register" element={<RegisterHandler />} />
-        <Route path="/patients" element={<Patients />} />
-        <Route path="/patient_dashboard" element={<PatientDashboard />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/appointments" element={<Appointments />} />
+        <Route element={<RequireAuth></RequireAuth>}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/patients" element={<Patients />} />
+          <Route path="/patient_dashboard" element={<PatientDashboard />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/messages" element={<Appointments />} />
+        </Route>
       </Routes>
     </div>
   )

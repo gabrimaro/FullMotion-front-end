@@ -1,16 +1,22 @@
 import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom"
 import '../css/Register.css'
 
 export default function Register({setSuccess}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [repeat, setRepeat] = useState('');
-    const [fname, setFname] = useState('');
-    const [lname, setLname] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeat, setShowRepeat] = useState(false);
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
+    const [email, setEmail] = useState('');
+    const [prefix, setPrefix] = useState('');
+    const [suffix, setSuffix] = useState('');
+    const navigate = useNavigate();
+
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -19,27 +25,25 @@ export default function Register({setSuccess}) {
             setErrMsg('Passwords are not the same.')
         }
 
+        console.log('prefix')
+
         try {
             const response = await Axios.post("http://localhost:8080/register",
                 {
+                    firstName: firstname,
+                    lastName: lastname,
+                    email: email,
                     username: username,
-                    password: password
+                    password: password,
+                    prefix: prefix,
+                    suffix: suffix
                 }
             );
 
-        window.location.href = '/'
+        navigate("/login", {replace:true})
         
         } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response')
-                console.log(err)
-            }
-            else if (err?.response.status === 401) {
-                setErrMsg('Username or Password Not Found')
-            }
-            else {
-                setErrMsg("Registration Failed")
-            }
+            setErrMsg(err.response?.data?.message || "Registration Failed")
         }
     }
 
@@ -49,14 +53,39 @@ export default function Register({setSuccess}) {
             <form onSubmit={handleSubmit}>
                 <p className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
                 <div className="name-inp">
+                    <select
+                        id="prefix"
+                        name='prefix'
+                        autoComplete="off"
+                        value={prefix}
+                        onChange={(e) => setPrefix(e.target.value)}
+                    >
+                        <option value="" className="default" selected>Prefix</option>
+                        <option value="dr">Dr.</option>
+                        <option value="rn">RN.</option>
+                        <option value="mr">Mr.</option>
+                    </select>
+                    <select
+                        id="suffix"
+                        name='suffix'
+                        autoComplete="off"
+                        value={suffix}
+                        onChange={(e) => setSuffix(e.target.value)}
+                    >
+                        <option value="" selected>Suffix</option>
+                        <option value="phd">PhD</option>
+                        <option value="md">MD</option>
+                    </select>
+                </div>
+                <div className="name-inp">
                     <input
                         id="fname"
                         type="text"
                         placeholder="First Name"
                         name='fname'
                         autoComplete="off"
-                        value={fname}
-                        onChange={(e) => setFname(e.target.value)}
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
                         required
                     />
                     <input
@@ -65,8 +94,8 @@ export default function Register({setSuccess}) {
                         placeholder="Last Name"
                         name='lname'
                         autoComplete="off"
-                        value={lname}
-                        onChange={(e) => setLname(e.target.value)}
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
                         required
                     />
                 </div>
@@ -80,6 +109,19 @@ export default function Register({setSuccess}) {
                         autoComplete="off"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="email-inp">
+                    <label htmlFor="email"><i class='bx bxs-envelope'></i></label>
+                    <input
+                        id="email"
+                        type="text"
+                        placeholder="Email"
+                        name='email'
+                        autoComplete="off"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>
@@ -101,7 +143,7 @@ export default function Register({setSuccess}) {
                     <label htmlFor="repeat"><i class='bx bxs-lock-alt'></i></label>
                     <input
                         id="password"
-                        type='password'
+                        type={showRepeat ? 'text' : 'password'}
                         placeholder="Repeat Password"
                         name='repeat'
                         autoComplete="off"
@@ -109,7 +151,7 @@ export default function Register({setSuccess}) {
                         onChange={(e) => setRepeat(e.target.value)}
                         required
                     />
-                    <div className="eye" onClick={() => setShowPassword((prev) => !prev)}>{showPassword ? <i class='bx bxs-hide' ></i> : <i class='bx bxs-show' ></i>}</div>
+                    <div className="eye" onClick={() => setShowRepeat((prev) => !prev)}>{showRepeat ? <i class='bx bxs-hide' ></i> : <i class='bx bxs-show' ></i>}</div>
                 </div>
                 <button id="submit" type='submit'>Submit</button>
             </form>

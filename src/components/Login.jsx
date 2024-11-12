@@ -2,12 +2,15 @@ import { useState, useEffect, useContext } from "react";
 import {useNavigate} from 'react-router-dom'
 import Axios from "axios";
 import '../css/Login.css'
+import useAuth from '../hooks/useAuth';
 
 export default function LoginHandler({setSuccess}) {
+    const {setAuth} = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -16,23 +19,23 @@ export default function LoginHandler({setSuccess}) {
             const response = await Axios.post("http://localhost:8080/login",
                 {
                     username: username,
-                    password: password
+                    password: password,
                 }
             );
 
-        useNavigate('/', replace=true)
+            const firstname = response?.data?.firstName
+            const lastname = response?.data?.lastName
+            const email = response?.data?.email
+            const prefix = response?.data?.prefix
+            const suffix = response?.data?.suffix
+
+            setAuth({username, email, prefix, firstname, lastname, suffix})
+
+            navigate("/", {replace:true})
         
         } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response')
-                console.log(err)
-            }
-            else if (err?.response.status === 401) {
-                setErrMsg('Username or Password Not Found')
-            }
-            else {
-                setErrMsg("Login Failed")
-            }
+            console.log(err)
+            setErrMsg(err.response?.data?.message || "Login Failed")
         }
     }
 

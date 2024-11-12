@@ -9,6 +9,11 @@ import filler_chart from '../images/filler_chart.png'
 
 
 export default function PatientDashboard() {
+    const [isRunning, setIsRunning] = useState(false);
+    const [elapsedTime, setElapsedTime] = useState(0);
+    const intervalIdRef = useRef(null);
+    const startTimeRef = useRef(0);
+
     return (
         <div className="patient-dash">
             <div className="patient-info">
@@ -106,7 +111,7 @@ export default function PatientDashboard() {
                 <DataContainer className='data temp' title='Temperature and Sweat' />
             </div>
             <div className="right">
-                <Timer />
+                <Timer isRunning={isRunning} setIsRunning={setIsRunning} elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} intervalIdRef={intervalIdRef} startTimeRef={startTimeRef} />
                 <NotifCenter />
             </div>
         </div>
