@@ -16,6 +16,7 @@ export default function LoginHandler({setSuccess}) {
         e.preventDefault()
 
         try {
+            /*
             const response = await Axios.post("http://localhost:8080/login",
                 {
                     username: username,
@@ -28,6 +29,13 @@ export default function LoginHandler({setSuccess}) {
             const email = response?.data?.email
             const prefix = response?.data?.prefix
             const suffix = response?.data?.suffix
+            */
+
+            const firstname = "Doctor"
+            const lastname = "Lastname"
+            const email = "medicine@example.com"
+            const prefix = "Dr."
+            const suffix = ""
 
             setAuth({username, email, prefix, firstname, lastname, suffix})
 
