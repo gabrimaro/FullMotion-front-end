@@ -8,7 +8,7 @@ import "../css/Threshold.css";
 // Register required Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip);
 
-export const Scale = () => {
+export const Scale = ({isRunning, elapsedTime}) => {
 
 //-----------------------------------------------------Code for chart-------------------------------------------------------------------------
   const [data, setData] = useState({
@@ -33,7 +33,7 @@ export const Scale = () => {
 
 
   useEffect(() => {
-    if (status === 'started' && !intervalId) {
+    if (status === "started" && !intervalId) {
       const newIntervalId = setInterval(() => {
 
         setData((prevData) => {

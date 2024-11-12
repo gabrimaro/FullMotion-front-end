@@ -88,7 +88,7 @@ export default function PatientDashboard() {
             <div className="sensor-data">
                 <DataContainer className='data motion' title='Motion'>
                     <SensorData className='sensor' title='Angle'>
-                        <Scale/>
+                        <Scale isRunning={isRunning} elapsedTime={elapsedTime} />
                     </SensorData>
                     <SensorData className='sensor' title='ROM'>
                         <img src={filler_chart} alt="" />
