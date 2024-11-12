@@ -12,8 +12,7 @@ import { useState, useRef } from 'react'
 export default function PatientDashboard() {
     const [isRunning, setIsRunning] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
-    const intervalIdRef = useRef(null);
-    const startTimeRef = useRef(0);
+    const [isPaused, setIsPaused] = useState(false)
 
     return (
         <div className="patient-dash">
@@ -88,7 +87,7 @@ export default function PatientDashboard() {
             <div className="sensor-data">
                 <DataContainer className='data motion' title='Motion'>
                     <SensorData className='sensor' title='Angle'>
-                        <Scale isRunning={isRunning} elapsedTime={elapsedTime} />
+                        <Scale isRunning={isRunning} elapsedTime={elapsedTime} isPaused={isPaused}/>
                     </SensorData>
                     <SensorData className='sensor' title='ROM'>
                         <img src={filler_chart} alt="" />
@@ -112,7 +111,7 @@ export default function PatientDashboard() {
                 <DataContainer className='data temp' title='Temperature and Sweat' />
             </div>
             <div className="right">
-                <Timer isRunning={isRunning} setIsRunning={setIsRunning} elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} intervalIdRef={intervalIdRef} startTimeRef={startTimeRef} />
+                <Timer isRunning={isRunning} setIsRunning={setIsRunning} elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} setIsPaused={setIsPaused}/>
                 <NotifCenter />
             </div>
         </div>

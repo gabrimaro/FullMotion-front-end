@@ -35,7 +35,7 @@ export default function LoginHandler({setSuccess}) {
         
         } catch (err) {
             console.log(err)
-            setErrMsg(err.response?.data?.message || "Login Failed")
+            setErrMsg(err.response?.data || "Login Failed")
         }
     }
 

@@ -25,8 +25,6 @@ export default function Register({setSuccess}) {
             setErrMsg('Passwords are not the same.')
         }
 
-        console.log('prefix')
-
         try {
             const response = await Axios.post("http://localhost:8080/register",
                 {
@@ -43,7 +41,7 @@ export default function Register({setSuccess}) {
         navigate("/login", {replace:true})
         
         } catch (err) {
-            setErrMsg(err.response?.data?.message || "Registration Failed")
+            setErrMsg(err.response?.data || "Registration Failed")
         }
     }
 
@@ -61,9 +59,11 @@ export default function Register({setSuccess}) {
                         onChange={(e) => setPrefix(e.target.value)}
                     >
                         <option value="" className="default" selected>Prefix</option>
-                        <option value="dr">Dr.</option>
-                        <option value="rn">RN.</option>
-                        <option value="mr">Mr.</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Miss">Miss</option>
                     </select>
                     <select
                         id="suffix"
@@ -73,8 +73,10 @@ export default function Register({setSuccess}) {
                         onChange={(e) => setSuffix(e.target.value)}
                     >
                         <option value="" selected>Suffix</option>
-                        <option value="phd">PhD</option>
-                        <option value="md">MD</option>
+                        <option value="PhD">PhD</option>
+                        <option value="M.D.">M.D.</option>
+                        <option value="PA">PA</option>
+                        <option value="NP">NP</option>
                     </select>
                 </div>
                 <div className="name-inp">

@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import '../css/Timer.css';
 
-export default function Timer ({className='Timer', isRunning, setIsRunning, elapsedTime, setElapsedTime, intervalIdRef, startTimeRef}) {
+export default function Timer ({className='Timer', isRunning, setIsRunning, elapsedTime, setElapsedTime, setIsPaused}) {
+    const intervalIdRef = useRef(null);
+    const startTimeRef = useRef(0);
+    
     const style = {
         display: "flex",
         flexDirection: "column"
@@ -25,10 +28,12 @@ export default function Timer ({className='Timer', isRunning, setIsRunning, elap
     }
 
     function stop() {
+        setIsPaused(true);
         setIsRunning(false);
     }
     
     function reset() {
+        setIsPaused(false);
         setIsRunning(false);
         setElapsedTime(0);
     }

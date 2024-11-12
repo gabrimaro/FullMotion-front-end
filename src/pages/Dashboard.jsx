@@ -7,10 +7,11 @@ import useAuth from '../hooks/useAuth';
 
 export default function Dashboard() {
     const { auth } = useAuth()
-    console.log(auth)
     const firstname = auth?.firstname
     const lastname = auth?.lastname
     const email = auth?.email
+    const prefix = auth?.prefix
+    const suffix = auth?.suffix
     const [state, setState] = useState(1);
     const action = (index) => {
         setState(index)
@@ -26,7 +27,7 @@ export default function Dashboard() {
             <div className='tProfile'>
                 <img src={pfp} alt="me" class="pfp"/>
                 <div className='Tname'>
-                    <h1> Dr. {firstname} {lastname}</h1>
+                    <h1>{prefix} {firstname} {lastname}{suffix != "" ? "," : ""} {suffix}</h1>
                     <h2> Physical Therapist</h2> 
                 </div>
 
@@ -62,7 +63,7 @@ export default function Dashboard() {
                     <div className={`${state===2 ? 'content active-content' : 'content'}`}>
                         <h2>Personal Details</h2>
                         <h3>Full Name:  </h3>
-                            <p className="indented">Dr. Johnson Johnson</p>
+                            <p className="indented">{prefix} {firstname} {lastname}{suffix != "" ? "," : ""} {suffix}</p>
                         <h3>Phone Number:  </h3>
                             <p className="indented"> (757) 123 - 4567</p>
                         <h3>Email Address:  </h3>
