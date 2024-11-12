@@ -1,0 +1,101 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--panel);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.login form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
+    padding: 25px;
+}
+
+.login h2 {
+    font-size: 2em;
+}
+
+.login form>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 400px;
+    font-size: 18px;
+    gap: 10px;
+    border-radius: 30px;
+}
+
+.login form div.user-inp {
+    padding-left: 10px;
+    background-color: var(--light-accent);
+}
+
+.login form div.pass-inp {
+    padding: 0 10px;
+    background-color: var(--light-accent);
+}
+
+.login input#username, .login input#password {
+    width: 100%;
+    font-size: inherit;
+    border: none;
+    padding: 10px;
+    background-color: var(--light-accent);
+}
+
+.login input#username {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.login input#show-pass {
+    z-index: 100;
+    opacity: 0;
+}
+
+.login .eye {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login .eye i {
+    font-size: 24px;
+}
+
+.login button#submit {
+    width: 100%;
+    font-size: inherit;
+    padding: 10px;
+    background-color: var(--dark-accent);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.login button#submit:hover {
+    cursor: pointer;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.errmsg {
+    display: inline;
+    background-color: #e27c7c;
+    border: 2px solid #d65656;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.login .offscreen {
+    display: none;
+}

@@ -1,16 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import '../css/Timer.css';
 
-export default function Timer ({className='Timer'}) {
+export default function Timer ({className='Timer', isRunning, setIsRunning, elapsedTime, setElapsedTime, intervalIdRef, startTimeRef}) {
     const style = {
         display: "flex",
         flexDirection: "column"
     }
-
-    const [isRunning, setIsRunning] = useState(false);
-    const [elapsedTime, setElapsedTime] = useState(0);
-    const intervalIdRef = useRef(null);
-    const startTimeRef = useRef(0);
 
     useEffect(() => {
         if(isRunning) {

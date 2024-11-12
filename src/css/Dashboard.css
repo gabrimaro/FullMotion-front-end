@@ -94,7 +94,7 @@
 }
 
 .contents{
-    position: relative;
+    position: absolute;
 }
 
 .content {
@@ -105,9 +105,8 @@
 .active-content {
     display: block;
     margin-top: 5px;
-    margin-left: 15px;
-    margin-right: 10px;
-    transition: all 1s ease-in-out;
+    margin-left: 35px;
+    transition: all 2s ease-in-out;
     animation: example 0.3s;
 }
 
@@ -139,4 +138,18 @@
     cursor: pointer;
     box-shadow:  0px 5px 5px #ccc;
 
+}
+
+h2 {
+    margin-top: 15px;
+}
+
+h3 {
+    margin-top: 25px;
+    margin-left: 15px;
+    
+}
+p.indented { 
+    margin-top: 15px;
+    margin-left: 55px;
 }

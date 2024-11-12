@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/patientList.css';
+import { Link } from 'react-router-dom';
 
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 
@@ -24,9 +25,7 @@ export const PatientList = ({ rows, deletePatient, editRow }) => {
                     return (
                         <tr key={idx}>
                             <td>
-                                <div className='pProfile-btn' onClick={() => window.location.href = "/patient_dashboard"}>
-                                        Profile
-                                </div>
+                                <Link className='pProfile-btn' to='/patient_dashboard'>Profile</Link>
                             </td>
                             <td>{row.name}</td>
                             <td className='pnumber'>{row.number}</td>
