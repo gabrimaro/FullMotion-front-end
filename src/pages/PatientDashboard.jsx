@@ -6,9 +6,14 @@ import Timer from '../components/Timer.jsx'
 import '../css/PatientDashboard.css'
 import blank_profile from "../images/blank_profile.webp"
 import filler_chart from '../images/filler_chart.png'
+import { useState, useRef } from 'react'
 
 
 export default function PatientDashboard() {
+    const [isRunning, setIsRunning] = useState(false);
+    const [elapsedTime, setElapsedTime] = useState(0);
+    const [isPaused, setIsPaused] = useState(false)
+
     return (
         <div className="patient-dash">
             <div className="patient-info">
@@ -82,7 +87,7 @@ export default function PatientDashboard() {
             <div className="sensor-data">
                 <DataContainer className='data motion' title='Motion'>
                     <SensorData className='sensor' title='Angle'>
-                        <Scale/>
+                        <Scale isRunning={isRunning} elapsedTime={elapsedTime} isPaused={isPaused}/>
                     </SensorData>
                     <SensorData className='sensor' title='ROM'>
                         <img src={filler_chart} alt="" />
@@ -106,7 +111,7 @@ export default function PatientDashboard() {
                 <DataContainer className='data temp' title='Temperature and Sweat' />
             </div>
             <div className="right">
-                <Timer />
+                <Timer isRunning={isRunning} setIsRunning={setIsRunning} elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} setIsPaused={setIsPaused}/>
                 <NotifCenter />
             </div>
         </div>
