@@ -6,6 +6,7 @@ import Timer from '../components/Timer.jsx'
 import '../css/PatientDashboard.css'
 import blank_profile from "../images/blank_profile.webp"
 import filler_chart from '../images/filler_chart.png'
+import { useState, useRef } from 'react'
 
 
 export default function PatientDashboard() {
