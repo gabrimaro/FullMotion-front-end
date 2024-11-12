@@ -1,10 +1,12 @@
-import '../css/PatientDashboard.css'
-import filler_chart from '../images/filler_chart.png'
-import blank_profile from "../images/blank_profile.webp"
 import DataContainer from '../components/DataContainer'
-import SensorData from '../components/SensorData.jsx'
 import NotifCenter from '../components/NotifCenter.jsx'
+import { Scale } from '../components/Scale.jsx'
+import SensorData from '../components/SensorData.jsx'
 import Timer from '../components/Timer.jsx'
+import '../css/PatientDashboard.css'
+import blank_profile from "../images/blank_profile.webp"
+import filler_chart from '../images/filler_chart.png'
+
 
 export default function PatientDashboard() {
     return (
@@ -80,7 +82,7 @@ export default function PatientDashboard() {
             <div className="sensor-data">
                 <DataContainer className='data motion' title='Motion'>
                     <SensorData className='sensor' title='Angle'>
-                        <img src={filler_chart} alt="" />
+                        <Scale/>
                     </SensorData>
                     <SensorData className='sensor' title='ROM'>
                         <img src={filler_chart} alt="" />
