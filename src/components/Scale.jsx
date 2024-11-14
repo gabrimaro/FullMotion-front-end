@@ -8,7 +8,7 @@ import "../css/Threshold.css";
 // Register required Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip);
 
-export const Scale = () => {
+export const Scale = ({isRunning, elapsedTime, isPaused}) => {
 
 //-----------------------------------------------------Code for chart-------------------------------------------------------------------------
   const [data, setData] = useState({
@@ -23,9 +23,6 @@ export const Scale = () => {
     ],
   });
 
-  const [startTime] = useState(Date.now()); // records the start time when the component is first loaded
-                                            //need to change to when button is pushed
-  
   const [latestNumber, setLatestNumber] = useState(0); // Track the latest random number
 
   const [status, setStatus] = useState('stopped'); // status: 'started', 'paused', or 'stopped' from buttons on patient profile
@@ -33,12 +30,11 @@ export const Scale = () => {
 
 
   useEffect(() => {
-    if (status === 'started' && !intervalId) {
+    if (isRunning && !intervalId) {
       const newIntervalId = setInterval(() => {
 
         setData((prevData) => {
 
-          const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
           const newData = Math.floor(Math.random() * 100); // REPLACE WITH SENSOR DATA
 
           setLatestNumber(newData); //number to show
@@ -60,10 +56,10 @@ export const Scale = () => {
 
       //----------------------------------------------------------------Code for Start/Pause/Stop----------------------------------------
       setIntervalId(newIntervalId);
-    } else if (status === 'paused' && intervalId) {
+    } else if (!isRunning && isPaused) {
       clearInterval(intervalId); // Clear interval when paused
       setIntervalId(null);
-    } else if (status === 'stopped' && intervalId) {
+    } else if (!isRunning && !isPaused) {
       clearInterval(intervalId); // Clear interval when stopped
       setIntervalId(null);
       setData({ labels: [], datasets: [{ label: 'Sensor Data', data: [], borderColor: 'rgb(75, 192, 192)', backgroundColor: 'rgba(75, 192, 192, 0.2)', fill: true }] });
@@ -74,7 +70,7 @@ export const Scale = () => {
     return ()  => {
       if (intervalId) clearInterval(intervalId); // Cleanup on unmount
     };
-  }, [status, intervalId, startTime]);
+  }, [isRunning, isPaused]);
   //--------------------------------------------------------------------------------------------------------------------------------------------------
   const options = {
     responsive: true,
@@ -189,12 +185,6 @@ export const Scale = () => {
                 className='input'
                 placeholder="Enter low threshold"
               />
-            </div>
-
-            <div className="control-buttons">
-              <button onClick={() => setStatus('started')} disabled={status === 'started'}>Start</button>
-              <button onClick={() => setStatus('paused')} disabled={status === 'paused'}>Pause</button>
-              <button onClick={() => setStatus('stopped')} disabled={status === 'stopped'}>Stop</button>
             </div>
           
           
