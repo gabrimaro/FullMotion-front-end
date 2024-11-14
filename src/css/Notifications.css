@@ -20,10 +20,19 @@ h1 {
     justify-content: center;
     height: 100vh;
     float: none;
-    margin-top: 3%;
+    margin-top: 2%;
     margin-left: 5%;
     
 }
+
+.nHeading {
+    font-size: clamp(3rem, 2.8cqi, 6rem);
+    letter-spacing: 0.3rem;
+    padding-left: 1.3rem;
+    padding-top: 3rem;
+}
+
+
 
 .notifTable{
     background-color: var(--panel);
@@ -32,7 +41,7 @@ h1 {
     table-layout: fixed;
     border-collapse: collapse;
     border-radius: 10px;
-    max-width: 95%;
+    max-width: 90%;
     margin-top: 0;
     
 }
@@ -45,8 +54,14 @@ h1 {
 .notifTable td {
     padding: 0.8rem;
     text-align: center;
-    width: 20%;
+    width: calc(100%/8.5);
+    font-weight: bold;
 }
 .notifTable td {
-    font-size: 15px;
+    font-size: (1.3rem, .7cqi, 1.5rem);
+
+}
+
+.notifTable th {
+    font-size: clamp(1.5rem, 1cqi, 2rem);
 }
