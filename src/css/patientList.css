@@ -45,6 +45,9 @@
 .Ptable td {
     padding: 0.8rem;
     text-align: center;
+}
+
+.ptable th{
     font-weight: bold;
 }
 
