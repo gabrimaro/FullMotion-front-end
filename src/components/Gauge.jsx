@@ -1,5 +1,5 @@
 import { ArcElement, Chart as ChartJS, DoughnutController, Legend, Title, Tooltip } from 'chart.js';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "../css/Gauge.css";
 import "../css/Threshold.css";
 
@@ -10,6 +10,28 @@ ChartJS.register(DoughnutController, ArcElement, Title, Tooltip, Legend);
 export const Gauge = ({isRunning, elapsedTime, isPaused}) => {
     
     const [latestNumber, setLatestNumber] = useState(0); // Track the latest random number
+    const chartRef = useRef(null); // <-- Added: Reference to store the chart instance
+
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        const newNumber = Math.floor(Math.random() * 100); // Generate a random number between 0 and 100
+        setLatestNumber(newNumber); // Update the displayed number
+  
+        // <-- Added: Update only needleValue2 dynamically without reloading the chart
+        if (chartRef.current) {
+          chartRef.current.data.datasets[0].needleValue2 = newNumber;
+          chartRef.current.update(); // Triggers a re-render for the updated needle
+        }
+      }, 1000); // Update every 1 second
+  
+      // Clean up the interval when the component unmounts
+      return () => clearInterval(intervalId);
+    }, []);
+  
+    //-------------------------------------------------------------------------------
+    const options = {
+      responsive: true,
+    };
     
     //-----------------------------------------------------Code for Random Number-------------------------------------------------------------------------
     /*
@@ -32,10 +54,7 @@ export const Gauge = ({isRunning, elapsedTime, isPaused}) => {
 
     useEffect(() => {
 
-        const randomNumberInterval = setInterval(() => {
-            const newNumber = Math.floor(Math.random() * 100); // Generate a random number between 0 and 100
-            setLatestNumber(newNumber); // Update the displayed number
-          }, 1000); // Update every 1 second
+
 
         // Data setup
         const data = {
@@ -224,14 +243,12 @@ export const Gauge = ({isRunning, elapsedTime, isPaused}) => {
         
     
         // Render chart
-        const myChart = new ChartJS(document.getElementById("myChart"), config);
+    const chartInstance = new ChartJS(document.getElementById("myChart"), config);
+    chartRef.current = chartInstance; // <-- Added: Store the chart instance in ref
 
-    // Cleanup for both the interval and the chart
-        return () => {
-            clearInterval(randomNumberInterval);
-            myChart.destroy();
-    };
-  }, [latestNumber]);
+    // Cleanup
+    return () => chartInstance.destroy();
+  }, []);
       
 
 
