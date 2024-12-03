@@ -1,54 +1,46 @@
 import React from 'react';
 import '../css/patientList.css';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import { useEffect } from 'react';
+import Axios from 'axios';
 
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 
-
-export const PatientList = ({ rows, deletePatient, editRow }) => {
+export const PatientList = ({ rows }) => {
     return (
     <div className='PatientTable'>
         <table className='Ptable'>
             <thead>
-                <tr>
-                    <th> </th>
-                    <th className='expand'>Name</th>
-                    <th>Phone Number</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Status</th>
+                <th> </th>
             </thead>
 
             <tbody>
-                {rows.map((row, idx) => {
-                    const statusText = row.status.charAt(0).toUpperCase() + row.status.slice(1);
+                {rows.map((row, index) => {
                     return (
-                        <tr key={idx}>
-                            <td>
-                                <Link className='pProfile-btn' to='/patient_dashboard'>Profile</Link>
-                            </td>
-                            <td>{row.name}</td>
-                            <td className='pnumber'>{row.number}</td>
-                            <td> 
-                                <span className={`label label-${row.status}`}>
-                                    {statusText}
+                        <tr key={index}>
+                            <td className='name-row'><Link to={"/patients/dashboard?id="+row?.id}>{row.name}</Link></td>
+                            <td className='phone-row'>{row?.number}</td>
+                            <td className='status-row'> 
+                                <span className={`label label-${row?.status}`}>
+                                    {row?.status}
                                 </span>
                             </td>
-                            <td>
+                            <td className='actions-row'>
                                 <span className='actions'>
-                                    <BsFillTrashFill className='delete-btn' onClick={() => deletePatient(idx)}/>
-                                    <BsFillPencilFill onClick={() => editRow(idx)}/>
+                                    <BsFillTrashFill className='delete-btn'/>
+                                    <BsFillPencilFill/>
                                 </span>
                             </td>
                         </tr>
                     );
                 })}
-
             </tbody>
-
         </table>
     </div>
-
     )
- 
+
 };

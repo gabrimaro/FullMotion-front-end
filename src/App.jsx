@@ -23,7 +23,7 @@ export default function App() {
         <Route element={<RequireAuth></RequireAuth>}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/patients" element={<Patients />} />
-          <Route path="/patient_dashboard" element={<PatientDashboard />} />
+          <Route path="/patients/dashboard" element={<PatientDashboard />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/messages" element={<Appointments />} />

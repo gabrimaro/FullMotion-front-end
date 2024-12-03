@@ -28,8 +28,10 @@ export default function LoginHandler({setSuccess}) {
             const email = response?.data?.email
             const prefix = response?.data?.prefix
             const suffix = response?.data?.suffix
+            const info = response?.data
 
-            setAuth({username, email, prefix, firstname, lastname, suffix})
+            setAuth({username, email, prefix, firstname, lastname, suffix, info})
+            console.log({username, email, prefix, firstname, lastname, suffix, info})
 
             navigate("/", {replace:true})
         
