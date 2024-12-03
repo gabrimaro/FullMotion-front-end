@@ -51,7 +51,7 @@ export default function Patients() {
                     email: email,
                     phone: phone,
                     notes: '',
-                    user: info
+                    user: username
                 }
             );
 
@@ -62,9 +62,11 @@ export default function Patients() {
         }
     }
 
+
+    
+
     return (
         <div className='patientList'>
-            <button onClick={getPatients}>button</button>
             <div className="top">
                 <button className='pList-btn' onClick={() => setAddBool(true)}> 
                     <button className='btn' >Add Patient</button>

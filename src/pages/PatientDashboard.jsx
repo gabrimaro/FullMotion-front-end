@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import DataContainer from '../components/DataContainer'
 import Gauge from '../components/Gauge.jsx'
 import NotifCenter from '../components/NotifCenter.jsx'

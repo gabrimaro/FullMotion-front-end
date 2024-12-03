@@ -10,24 +10,13 @@ import Notifications from './pages/Notifications.jsx'
 import PatientDashboard from './pages/PatientDashboard.jsx'
 import Patients from './pages/Patients.jsx'
 import RegisterHandler from './pages/RegisterHandler.jsx'
+import RequireAuth from './auth/RequireAuth.jsx'
 
 
 export default function App() {
   return (
     <div class="wrapper">
-      <Navbar />
-
-      <Routes>
-      <Route path="/login" element={<LoginHandler />} />
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/register" element={<RegisterHandler />} />
-      <Route path="/patients" element={<Patients />} />
-      <Route path="/patient_dashboard" element={<PatientDashboard />} />
-      <Route path="/notifications" element={<Notifications />} />
-      <Route path="/appointments" element={<Appointments />} />
-      <Route path="/messages" element={<Messages />} />
-    </Routes>
-      {/* Original Code for Login
+      <Navbar/>
       <Routes>
         <Route path="/login" element={<LoginHandler />} />
         <Route path="/register" element={<RegisterHandler />} />
@@ -37,10 +26,9 @@ export default function App() {
           <Route path="/patients/dashboard" element={<PatientDashboard />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/appointments" element={<Appointments />} />
-          <Route path="/messages" element={<Appointments />} />
+          <Route path="/messages" element={<Messages />} />
         </Route>
       </Routes>
-      */}
     </div>
   )
 }
