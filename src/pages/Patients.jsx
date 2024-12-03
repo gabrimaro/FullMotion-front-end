@@ -39,27 +39,27 @@ export default function Patients() {
     };
 
     return (
+        <div className="pList">
+            <div className='patientList'>
 
-        <div className='patientList'>
-
-            <button className='pList-btn' onClick={() => setModalOpen(true)}> 
-                <div className='btn' >Add Patient</div>
-            </button>
-            <PatientList rows={rows} deletePatient={deleteRow} editRow={handleEditRow}/>
-            
-            {modalOpen && (
-                <Modal 
-                    closeModal={()=> {
-                        setModalOpen(false);
-                        setRowToEdit(null);
-                    }} 
-                    onSubmit={handleSubmit}
-                    defaultValue={rowToEdit != null && rows[rowToEdit]}
-                /> 
-            )}
+                <button className='pList-btn' onClick={() => setModalOpen(true)}> 
+                    <div className='btn' >Add Patient</div>
+                </button>
+                <PatientList rows={rows} deletePatient={deleteRow} editRow={handleEditRow}/>
+                
+                {modalOpen && (
+                    <Modal 
+                        closeModal={()=> {
+                            setModalOpen(false);
+                            setRowToEdit(null);
+                        }} 
+                        onSubmit={handleSubmit}
+                        defaultValue={rowToEdit != null && rows[rowToEdit]}
+                    /> 
+                )}
 
 
-
+            </div>
         </div>
     )
 }

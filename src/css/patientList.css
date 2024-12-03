@@ -1,24 +1,20 @@
-.patientList {
-    background-color: var(--light-bg);
-    margin: 0;
-    justify-content: center;
+.pList {
+    align-items: center;
+
+    margin-left: 50vh;
 
 }
 
 
-.PatientTable{
+.patientList{
     box-sizing: border-box;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    flex-direction: column;
     align-items: center;
-    height: 100vh;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    float: none;
     margin-top: 5%;
-    margin-left: 20%;
+    width: 100%;
 
 }
 
@@ -41,7 +37,7 @@
 }
 
 .Ptable thead {
-    background-color: #ccc;
+    background-color: var(--dark-accent);
     color: var(--dark-text);
 }
 
@@ -49,6 +45,10 @@
 .Ptable td {
     padding: 0.8rem;
     text-align: center;
+}
+
+.ptable th{
+    font-weight: bold;
 }
 
 .Ptable td {
@@ -108,7 +108,6 @@
 .pList-btn {
     border: none;
     border-radius: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
-    float: right;
+    margin-bottom: 20px;
+
 }

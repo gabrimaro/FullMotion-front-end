@@ -11,14 +11,14 @@ export default function Notifications() {
     return (
         <div className="notifs">
         
-            <h1>Notifications</h1>
+            <h1 className='nHeading'>Notifications</h1>
         
         <div className='notifsList'>
             <table className='notifTable'>
                 <thead>
                     <tr>
                         
-                        <th>Notifications</th>
+                        <th>Notification</th>
                         <th>Patient</th>
                         <th>Priority</th>
                         <th>Time</th>
