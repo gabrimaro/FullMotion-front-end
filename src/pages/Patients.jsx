@@ -63,7 +63,6 @@ export default function Patients() {
     }
 
     return (
-
         <div className='patientList'>
             <button onClick={getPatients}>button</button>
             <div className="top">

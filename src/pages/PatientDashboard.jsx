@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import DataContainer from '../components/DataContainer'
+import Gauge from '../components/Gauge.jsx'
 import NotifCenter from '../components/NotifCenter.jsx'
-import { Scale } from '../components/Scale.jsx'
 import SensorData from '../components/SensorData.jsx'
 import Timer from '../components/Timer.jsx'
 import '../css/PatientDashboard.css'
@@ -151,10 +152,9 @@ export default function PatientDashboard() {
             <div className="sensor-data">
                 <DataContainer className='data motion' title='Motion'>
                     <SensorData className='sensor' title='Angle'>
-                        <Scale isRunning={isRunning} elapsedTime={elapsedTime} isPaused={isPaused}/>
+                        <Gauge className="graph" isRunning={isRunning} isPaused={isPaused}/>
                     </SensorData>
                     <SensorData className='sensor' title='ROM'>
-                        <img src={filler_chart} alt="" />
                     </SensorData>
                 </DataContainer>
                 <DataContainer className='data posture' title='Posture'>

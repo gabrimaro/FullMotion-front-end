@@ -25,7 +25,7 @@
 }
 
 .Ptable thead {
-    background-color: #ccc;
+    background-color: var(--dark-accent);
     color: var(--dark-text);
     border-radius: 10px;
 }
@@ -34,6 +34,10 @@
 .Ptable td {
     padding: 0.8rem;
     text-align: center;
+}
+
+.ptable th{
+    font-weight: bold;
 }
 
 .Ptable td {
@@ -125,4 +129,5 @@
     background-color: var(--panel);
     padding: 50px;
     border-radius: 30px;
+    margin-bottom: 20px;
 }

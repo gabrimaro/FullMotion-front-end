@@ -36,21 +36,20 @@ export default function Dashboard() {
 
                 <div className="tabs">
                     <div onClick={()=>action(1)} className={`${state===1 ? 'tab active-tab' : 'tab'}`}>
-                        Overview
+                        <h2>Overview</h2>
                     </div>
                     <div onClick={()=>action(2)}  className={`${state===2 ? 'tab active-tab' : 'tab'}`}>
-                         Personal Details
+                        <h2>Personal Details</h2> 
                      </div>
                     <div onClick={()=>action(3)}  className={`${state===3 ? 'tab active-tab' : 'tab'}`}>
-                        Settings
+                        <h2>Settings</h2>
                     </div>
 
                 </div>
                 <div className="contents">
                     <div className={`${state===1 ? 'content active-content' : 'content'}`}>
                         <h2>Overview</h2>
-                        <h3>Specialization: </h3>
-                            <p className="indented">Orthopedic</p>
+
                         <h3>Location: </h3>
                             <p className="indented">Norfolk Virginia </p>
                         <h3>Office Hours:</h3>
