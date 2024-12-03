@@ -178,11 +178,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    visibility: hidden;
+    z-index: 100;
 }
 
 .patient-dash .edit-popup.active {
-    visibility: visible;
+    display: flex;
+}
+
+.patient-dash .edit-popup.inactive {
+    display: none;
+}
+
+.patient-dash .close-edit {
+    cursor: pointer;
+    font-size: 20px;
+    color: rgb(126, 54, 54);
 }
 
 .patient-dash .inner {
@@ -193,6 +203,13 @@
     border: 1px solid rgb(148, 201, 230);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
+
+.patient-dash .inner .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .sensor-data::-webkit-scrollbar {
     display: none; /* For Chrome, Edge, and Safari */
 }

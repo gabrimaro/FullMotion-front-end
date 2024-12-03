@@ -7,12 +7,76 @@ import Timer from '../components/Timer.jsx'
 import '../css/PatientDashboard.css'
 import blank_profile from "../images/blank_profile.webp"
 import filler_chart from '../images/filler_chart.png'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from "react-router-dom"
 
 
 export default function PatientDashboard() {
+    const [params, setParams] = useSearchParams()
+    const patientID = params.get('id')
+
     const [isRunning, setIsRunning] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
     const [isPaused, setIsPaused] = useState(false)
+
+    const [fname, setFname] = useState('')
+    const [lname, setLname] = useState('')
+    const [age, setAge] = useState('')
+    const [gender, setGender] = useState('')
+    const [dob, setDOB] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [notes, setNotes] = useState('')
+
+    const [editNotes, setEditNotes] = useState(false)
+
+    const getPatientInfo = async(e) => {
+        /*
+        const response = await Axios.post("",
+            {
+            }
+        );
+
+        const patient = response?.data[0]
+        */
+
+        setName('Jane Doe')
+        setAge('24')
+        setGender('Female')
+        setDOB('01/01/2000')
+        setJob('Accountant')
+        setEmail('email@example.com')
+        setPhone('(757) 555-0101')
+        setMobile('(757) 555-0202')
+        setNotes('')
+    }
+
+    const updateNotes = async(e) => {
+        setNotes(e.target.value)
+        /*
+        const response = await Axios.post("",
+            {
+                notes: notes
+            }
+        );
+
+        const patient = response?.data[0]
+        */
+
+        setName('Jane Doe')
+        setAge('24')
+        setGender('Female')
+        setDOB('01/01/2000')
+        setJob('Accountant')
+        setEmail('email@example.com')
+        setPhone('(757) 555-0101')
+        setMobile('(757) 555-0202')
+        
+    }
+
+        useEffect(() => {
+            getPatientInfo()
+        },[]);
 
     return (
         <div className="patient-dash">
@@ -22,34 +86,34 @@ export default function PatientDashboard() {
                 <div class="info">
                     <div>
                         <i>Age</i>
-                        <p>24</p>
+                        <p>{age}</p>
                     </div>
                     <div>
                         <i>Gender</i>
-                        <p>Female</p>
+                        <p>{gender}</p>
                     </div>
                     <div>
                         <i>Date of Birth</i>
-                        <p>01/01/2000</p>
+                        <p>{dob}</p>
                     </div>
                     <div>
                         <i>Occupation</i>
-                        <p>Accountant</p>
+                        <p>{job}</p>
                     </div>
                     <hr />
                     <div class="contact-info">
                         <i>Contact Information</i>
                         <div class="contact">
                             <i class='bx bxs-envelope'></i>
-                            <p title="myemail@email.com">myemail@email.com</p>
+                            <p title="myemail@email.com">{email}</p>
                         </div>
                         <div class="contact">
                             <i class='bx bxs-phone'></i>
-                            <p>(757) 555-1234</p>
+                            <p>{phone}</p>
                         </div>
                         <div class="contact">
                             <i class='bx bx-mobile'></i>
-                            <p>(757) 555-6789</p>
+                            <p>{mobile}</p>
                         </div>
                     </div>
                     <hr />
@@ -71,16 +135,17 @@ export default function PatientDashboard() {
                     <hr />
                     <div class="patient-notes">
                         <i>Notes</i>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non magna a dolor venenatis iaculis vel vitae ligula. Nulla pharetra urna quis ante pellentesque molestie. Sed vitae convallis mauris, a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non magna a dolor venenatis iaculis vel vitae ligula. Nulla pharetra urna quis ante pellentesque molestie. Sed vitae convallis mauris, a. </p>
-                        <i class='edit-notes bx bxs-pencil'></i>
+                        <p>{notes}</p>
+                        <i class='edit-notes bx bxs-pencil' onClick={(e) => {setEditNotes(true)}}></i>
                     </div>
                 </div>
-                <div class="popup edit-popup">
+                <div class={"edit-popup "+(editNotes ? 'active' : 'inactive')}>
                     <div class="inner">
                         <div class="top">
                             <h1>Edit Patient Info</h1>
-                            <i class='bx bxs-message-square-x close-button close-edit'></i>
+                            <i class='bx bxs-message-square-x close-edit' onClick={(e) => {setEditNotes(false)}}></i>
                         </div>
+                        <textarea value={notes} onChange={updateNotes}></textarea>
                     </div>
                 </div>
             </div>
