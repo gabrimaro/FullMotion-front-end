@@ -87,7 +87,7 @@ export default function PatientDashboard() {
             <div className="sensor-data">
                 <DataContainer className='data motion' title='Motion'>
                     <SensorData className='sensor' title='Angle'>
-                        <Gauge isRunning={isRunning} isPaused={isPaused}/>
+                        <Gauge className="graph" isRunning={isRunning} isPaused={isPaused}/>
                     </SensorData>
                     <SensorData className='sensor' title='ROM'>
                     </SensorData>

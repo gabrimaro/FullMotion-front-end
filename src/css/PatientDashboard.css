@@ -42,8 +42,11 @@
     width: 100px;
 }
 
-.patient-dash .sensor .col2 img {
-    height: 50px;
+.patient-dash .sensor .col2  img {
+    width: 100%;
+}
+.patient-dash .sensor .graph {
+    height: 80px;
     width: 100%;
 }
 
@@ -84,6 +87,10 @@
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
+}
+
+.info::-webkit-scrollbar {
+    display: none; /* remove scroll bar For Chrome, Edge, and Safari */
 }
 
 .patient-dash i {
@@ -186,7 +193,9 @@
     border: 1px solid rgb(148, 201, 230);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
-
+.sensor-data::-webkit-scrollbar {
+    display: none; /* For Chrome, Edge, and Safari */
+}
 /**** notif center ****/
 
 .right {
@@ -194,6 +203,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
 
 .patient-dash .NotifCenter {
     background-color: var(--panel);

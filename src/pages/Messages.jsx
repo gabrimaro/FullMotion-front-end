@@ -1,6 +1,5 @@
 import '../css/Messages.css'
 
-import { Gauge } from '../components/Gauge.jsx'
 
 export default function Messages() {
 
@@ -8,9 +7,8 @@ export default function Messages() {
         <>
         <div className="scale-container">
 
-            hello
+            
 
-            <Gauge/>
 
         </div>
 

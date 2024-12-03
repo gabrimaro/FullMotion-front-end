@@ -6,51 +6,71 @@ import "../css/Threshold.css";
 ChartJS.register(DoughnutController, ArcElement, Title, Tooltip, Legend);
 
 
-export const Gauge = ({isRunning, isPaused}) => {
+export const Gauge = ({isRunning, elapsedTime, isPaused}) => {
     
     const [latestNumber, setLatestNumber] = useState(-80); // track of random number - will need to replace with simulated data
     const chartRef = useRef(null); 
-    const intervalRef = useRef(null); // Added useRef to store the interval ID
+    const isChartInitialized = useRef(false); // Tracks if chart has been initialized
 
     const [intervalId, setIntervalId] = useState(null); // store interval id for clearing
 
-    useEffect(() => {
-        if (isRunning && !intervalId) { // Check if the gauge should be running and not paused
-            const newIntervalId = setInterval(() => {
-                setLatestNumber((prevNumber) => {
-                    // Gradually increase the number between -80 and 75
-                    const addNum = Math.floor(Math.random() * 5);
-                    const newNumber = Math.min(prevNumber + addNum, 75); // Ensure the number does not exceed 75
-                    
 
-                return newNumber;
-                });
-            }, 1000); // Update every 1 second
-
-            
     //----------------------------------------------------------------Code for Start/Pause/Stop----------------------------------------
-        setIntervalId(newIntervalId);
+    const updateLatestNumber = (chartRef) => (prevNumber) => {
+        // Gradually increase the number between -80 and 75
+        const addNum = Math.floor(Math.random() * 5);
+        const newNumber = Math.min(prevNumber + addNum, 75); // Ensure the number does not exceed 75
+        if (chartRef.current) {
+            chartRef.current.data.datasets[0].needleValue2 = newNumber;
+            chartRef.current.update(); 
+        }
+        return newNumber;
+    };
+
+    useEffect(() => {
+        if (isRunning && !intervalId) {
+            // Start a new interval if running and no interval exists
+            const newIntervalId = setInterval(() => {
+                setLatestNumber(updateLatestNumber(chartRef));
+            }, 1000); // Update every 1 second
+    
+            setIntervalId(newIntervalId); // Save the interval ID
         } else if (!isRunning && isPaused) {
-            clearInterval(intervalId); // Clear interval when paused
+            // Pause the interval
+            clearInterval(intervalId);
             setIntervalId(null);
         } else if (!isRunning && !isPaused) {
-            clearInterval(intervalId); // Clear interval when stopped
+            // Stop the interval and reset
+            clearInterval(intervalId);
             setIntervalId(null);
-            setLatestNumber(-80); // Reset latest number when stopped
+            setLatestNumber(-80); // Reset the needle value
         }
-
-        // Cleanup the interval when the component unmounts
-        return () => {
-            if (intervalId) clearInterval(intervalRef.current);
-        };
-    }, [isRunning, isPaused]); // Added dependency array to control re-running based on these props
-
     
+        // Cleanup the interval on component unmount
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [isRunning, isPaused]);
+
     // --------------------------------------------------Code for updating only needle
     
     //-----------------------------------------------------Code for chart-------------------------------------------------------------------------
+    useEffect(() => {
+        if (!chartRef.current) return; //<3> Added check to avoid issues if chartRef is null
+        console.log('second')
+        const chartInstance = chartRef.current;
+
+        // Update only the second needle data in the chart instance
+        chartInstance.data.datasets[0].needleValue2 = latestNumber;
+       // chartInstance.update(); // <3> Trigger an update for the specific needle change without reloading the whole chart
+    }, [latestNumber]); // Dependency array to update only when `latestNumber` changes
 
     useEffect(() => {
+
+
+        console.log('third')
+
+        
         // Data setup
         const data = {
           labels: ["start", "terrible", "Bad", "Okay", "Good"],
@@ -75,7 +95,7 @@ export const Gauge = ({isRunning, isPaused}) => {
               borderWidth: 1,
               circumference: 185,
               rotation: 175,
-              cutout: '50%',
+              cutout: '60%',
               needleValue1: -80, //starting needle (-80 = 0 degrees) need to raplce with start *************
               needleValue2: latestNumber, //needle following range (max is 75 = 155 degrees) need to replace**********************
 
@@ -140,14 +160,10 @@ export const Gauge = ({isRunning, isPaused}) => {
                 const yCenter = chart.getDatasetMeta(0).data[0].y
                 const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
                 const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
-
                 const widthSlice = ( outerRadius - innerRadius ) / 2;
                 const radius = 8;
 
-                const angle = Math.PI / 180;
-
                 const needleValue2 = data.datasets[0].needleValue2;
-                const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
 
                 const circumference = ((chart.getDatasetMeta(0).data[0].circumference / 
                     Math.PI) / data.datasets[0].data[0]) * needleValue2;
@@ -173,9 +189,8 @@ export const Gauge = ({isRunning, isPaused}) => {
 
                 ctx.restore();
 
-
-            },//
-        }; //
+            },
+        }; 
         
         const guageFlowMeter = {
             id: 'guageFlowMeter',
@@ -188,7 +203,7 @@ export const Gauge = ({isRunning, isPaused}) => {
                 const yCenter = chart.getDatasetMeta(0).data[0].y;
 
                 ctx.save();
-                ctx.font = 'bold 50px sans-serif';
+                ctx.font = 'bold 40px sans-serif';
                 ctx.fillStyle = 'black';
                 ctx.textBaseline = 'middle';
                 ctx.textAlign = 'left';
@@ -222,11 +237,11 @@ export const Gauge = ({isRunning, isPaused}) => {
                 const flexionDegree = mapToDegrees(data.datasets[0].needleValue2);
         
                 // Draw the labels
-                ctx.font = 'bold 15px sans-serif';
+                ctx.font = 'bold 12px sans-serif';
                 ctx.fillStyle = 'green'; // Customize this as needed
                 ctx.textAlign = 'left';
-                ctx.fillText(`Extension: ${extensionDegree.toFixed(1)}°`, xCenter - 250, yCenter - 20);
-                ctx.fillText(`Flexion: ${flexionDegree.toFixed(1)}°`, xCenter - 250, yCenter + 20);
+                ctx.fillText(`Extension: ${extensionDegree.toFixed(1)}°`, xCenter - 163, yCenter - 20);
+                ctx.fillText(`Flexion: ${flexionDegree.toFixed(1)}°`, xCenter - 150, yCenter + 20);
             }           
         }
     
@@ -238,7 +253,9 @@ export const Gauge = ({isRunning, isPaused}) => {
             data,
             options: {
                 responsive: true,
-                aspectRatio: 3, //size around chart
+//                aspectRatio: 1.5, //size around chart
+                maintainAspectRatio: false,
+                
                 plugins: {
                     legend: {
                         display: false
@@ -248,57 +265,40 @@ export const Gauge = ({isRunning, isPaused}) => {
                     } 
                 },
 
+
             
             },
             plugins: [gaugeNeedle1, gaugeNeedle2, recordedLabels, guageFlowMeter]
         };
         
-    
         // Render chart
-        const myChart = new ChartJS(document.getElementById("myChart"), config);
-
-    // Cleanup
-    return () => myChart.destroy();
-  }, [latestNumber, isRunning, isPaused]);
-      
-
-
-
-  //-----------------------------------------------------Code for Threshold-------------------------------------------------------------------------
-  const [highThreshold, setHighThreshold] = useState('');
-  const [lowThreshold, setLowThreshold] = useState('');
-
-
-  const handleHighThresholdChange = (e) => {
-    setHighThreshold(e.target.value);
-  };
-  const handleLowThresholdChange = (e) => {
-    setLowThreshold(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
-
-  };
-
-
-  const getNumberStyle = () => {
-    const high = parseFloat(highThreshold);
-    const low = parseFloat(lowThreshold);
+        const chartInstance = new ChartJS(document.getElementById("myChart"), config);
+        chartRef.current = chartInstance; // <-- Added: Store the chart instance in ref
     
-    if (latestNumber === null) return {}; 
-    
-    if (high && low) {
-      if (latestNumber > high ) {
-        return { color: 'red' };
-      }
-      if (latestNumber < low) {
-        return { color: 'red' }; 
-      }
-      return { color: 'green' }; 
-    }
-    return {}; 
-  };
+        // Cleanup
+        return () => chartInstance.destroy();
+    }, [latestNumber, isRunning, isPaused]);
+        
+
+
+
+    //-----------------------------------------------------Code for Threshold-------------------------------------------------------------------------
+    const [highThreshold, setHighThreshold] = useState('');
+    const [lowThreshold, setLowThreshold] = useState('');
+
+
+    const handleHighThresholdChange = (e) => {
+        setHighThreshold(e.target.value);
+    };
+    const handleLowThresholdChange = (e) => {
+        setLowThreshold(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+
+    };
+
 
 
     return (
