@@ -55,7 +55,7 @@ export default function Patients() {
                 }
             );
 
-            setRows(response?.data)
+            getPatients()
         }
         catch(err) {
             console.log(err)
