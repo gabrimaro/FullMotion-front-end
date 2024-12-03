@@ -34,7 +34,11 @@ h1 {
     border-radius: 10px;
     max-width: 95%;
     margin-top: 0;
-    
+
+}
+
+.notif-scroll::-webkit-scrollbar {
+    display: none; /* remove scroll bar For Chrome, Edge, and Safari */
 }
 
 .notifTable thead {

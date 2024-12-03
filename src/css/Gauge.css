@@ -1,0 +1,51 @@
+.gauge {
+    display: flex;
+    flex-direction: column;
+    height: 6rem;
+    width: 20rem;
+    border-radius: 15%;
+}
+
+
+
+
+.graph-container ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    margin: -15px;
+
+}
+
+
+.graph-container li {
+    padding-left: 20px;
+
+}
+
+.graph {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.ThresholdContainer {
+    height: 80%;
+    width: 85%; 
+}
+
+
+
+  
+.chartBox {
+    width: 20rem;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px rgba(54, 162, 235, 1);
+    background: white;
+    position: relative;
+    height: 10rem; /* Adjust as needed */
+  }
+
+
