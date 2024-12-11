@@ -1,36 +1,65 @@
 .graph-container {
     width: 100%;
-    height: 285px;          /* Make the width responsive */
-    flex-grow: 1;        /* Fixed height, keeps it short */
+    height: 100%;          /* Make the width responsive */
     margin: 15px;       /* Optional: center the graph horizontally */
     display: flex;
     justify-content: center;
-    background-color: #b2d6e9;
     border-radius: 20px;
     padding: 15px;
-    justify-content: space-between;
+    justify-content: space-around; /* Evenly space the elements */
     gap: 10px;
     
 }
+.graph-container ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    margin: -15px;
 
-.graph {
-    height: 480px;
-    width: 500px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
-.latestNumber {
 
-    margin-left: 45px;
-    margin-right: 45px;
-    margin-top: 50px;
+.graph-container li {
+    padding: 5px;
+}
+
+
+.linegraph {
+    width: 25rem;
+    height: 12rem; /* Adjust as needed */
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px rgba(54, 162, 235, 1);
+    background: white;
+    position: relative;
+}
+
+.numholder{
+    display: flex;
+    height: 210px;
+    width: 120px;
+    margin-top: 20px;
+    padding-right: 5px;
+    justify-content: center;   /* Center text horizontally */
+    align-items: center;       /* Center text vertically */ 
+    position: relative; /* Ensures it stays in the right place */
+}    
+
+
+.latestNumber {
+    display: flex;
     font-size: 50px;
-    height: 110px;
-    width: 110px;
- 
+    height: 80%;
+    width: 80%;
 }
 
 .control-buttons {
     margin-left: 40px;
 }
+
+.graph-container .ThresholdContainer {
+    flex-direction: column; 
+    gap: 10px;
+
+}
+

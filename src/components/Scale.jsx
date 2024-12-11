@@ -93,6 +93,7 @@ export const Scale = ({isRunning, elapsedTime, isPaused}) => {
 
       },
     },
+    
   };
 
   //-----------------------------------------------------Code for Threshold-------------------------------------------------------------------------
@@ -145,56 +146,61 @@ export const Scale = ({isRunning, elapsedTime, isPaused}) => {
 
 
       <div className='graph-container'>
+        <ul>
+          <li>
+            <div className="linegraph">
+              <Line 
+                data={data} 
+                options={options} 
+                />             
+            </div>          
+          </li>
 
-        <div className="graph">
-          <Line 
-            data={data} 
-            options={options} 
-            />             
-        </div>
-     
+          <li>
+            <div className="numholder">
+              {latestNumber !== null && (
+                <div className="latestNumber" style={getNumberStyle()}>
+                  <h3> {latestNumber}</h3>
+                </div>
+              )}          
+            </div>          
+          </li>
 
-        {latestNumber !== null && (
-          <div className="latestNumber" style={getNumberStyle()}>
-            <h3> {latestNumber}</h3>
-          </div>
-        )}
-    
-
-        <div className='ThresholdContainer'>
-          <h3>Threshold Input</h3>
-
-          <form onSubmit={handleSubmit}>
-
-            <div className='inputGroup'>
-              <input
-                type="number" // only take in numbers 
-                value={highThreshold} // Bind input to the highThreshold state
-                onChange={handleHighThresholdChange} // update state on input change
-                className='input'
-                placeholder="Enter high threshold"
-              />
-            </div>
-
-
-            <div className='inputGroup'>
-              <input
-                type="number" // only take in numbers 
-                value={lowThreshold} // Bind input to the lowThreshold state
-                onChange={handleLowThresholdChange} // update state on input change
-                className='input'
-                placeholder="Enter low threshold"
-              />
-            </div>
           
-          
-          </form>
-        
-        </div>
+          <li>
+            <div className='ThresholdContainer'>
+              <h3>Threshold Input</h3>
 
+              <form onSubmit={handleSubmit}>
+
+                <div className='inputGroup'>
+                  <input
+                    type="number" // only take in numbers 
+                    value={highThreshold} // Bind input to the highThreshold state
+                    onChange={handleHighThresholdChange} // update state on input change
+                    className='input'
+                    placeholder="Enter high threshold"
+                  />
+                </div>
+
+                <div className='inputGroup'>
+                  <input
+                    type="number" // only take in numbers 
+                    value={lowThreshold} // Bind input to the lowThreshold state
+                    onChange={handleLowThresholdChange} // update state on input change
+                    className='input'
+                    placeholder="Enter low threshold"
+                  />
+                </div>
+              </form>
+            
+            </div>
+          </li>
+
+
+        </ul>
 
       </div>
-    
 
     </div>
 

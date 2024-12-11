@@ -1,14 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from "react-router-dom"
 import DataContainer from '../components/DataContainer'
 import Gauge from '../components/Gauge.jsx'
 import NotifCenter from '../components/NotifCenter.jsx'
+import { Scale } from '../components/Scale.jsx'
 import SensorData from '../components/SensorData.jsx'
 import Timer from '../components/Timer.jsx'
 import '../css/PatientDashboard.css'
 import blank_profile from "../images/blank_profile.webp"
 import filler_chart from '../images/filler_chart.png'
-import { useState, useEffect } from 'react'
-import { useSearchParams } from "react-router-dom"
 
 
 export default function PatientDashboard() {
@@ -24,8 +24,10 @@ export default function PatientDashboard() {
     const [age, setAge] = useState('')
     const [gender, setGender] = useState('')
     const [dob, setDOB] = useState('')
+    const [job, setJob] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
+    const [mobile, setMobile] = useState('')
     const [notes, setNotes] = useState('')
 
     const [editNotes, setEditNotes] = useState(false)
@@ -150,6 +152,11 @@ export default function PatientDashboard() {
                 </div>
             </div>
             <div className="sensor-data">
+                <DataContainer className='data heart' title='Heart Rate'>
+                    <SensorData className='sensor' title='Heart Rate'>
+                        <Scale isRunning={isRunning} elapsedTime={elapsedTime} isPaused={isPaused}/>
+                    </SensorData>
+                </DataContainer>
                 <DataContainer className='data motion' title='Motion'>
                     <SensorData className='sensor' title='Angle'>
                         <Gauge className="graph" isRunning={isRunning} isPaused={isPaused}/>
@@ -167,11 +174,7 @@ export default function PatientDashboard() {
                         <img src={filler_chart} alt="" />
                     </SensorData>
                 </DataContainer>
-                <DataContainer className='data heart' title='Heart Rate'>
-                    <SensorData className='sensor' title='Heart Rate'>
-                        <img src={filler_chart} alt="" />
-                    </SensorData>
-                </DataContainer>
+
                 <DataContainer className='data temp' title='Temperature and Sweat' />
             </div>
             <div className="right">

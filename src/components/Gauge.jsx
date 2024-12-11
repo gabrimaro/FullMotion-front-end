@@ -304,11 +304,11 @@ export const Gauge = ({isRunning, elapsedTime, isPaused}) => {
     return (
         <div className="gauge">
             
-            <div className='graph-container'>   
+            <div className='graph-container2'>   
 
                 <ul>
                     <li>
-                        <div className="graph">  {/*******Previous CHart******************/}
+                        <div className="graph2">  {/*******Previous CHart******************/}
                             <div className="chartCard">    {/*******New CHart******************/}
                                 <div className="chartBox">
                                 <canvas id="myChart" ></canvas>
