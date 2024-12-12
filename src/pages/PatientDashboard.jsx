@@ -8,11 +8,13 @@ import blank_profile from "../images/blank_profile.webp"
 import filler_chart from '../images/filler_chart.png'
 import { useState, useEffect } from 'react'
 import { useSearchParams } from "react-router-dom"
+import useAuth from '../hooks/useAuth.jsx'
 
 
 export default function PatientDashboard() {
     const [params, setParams] = useSearchParams()
-    const patientID = params.get('id')
+    
+    const {auth} = useAuth();
 
     const [isRunning, setIsRunning] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
@@ -25,6 +27,8 @@ export default function PatientDashboard() {
     const [dob, setDOB] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
+    const [mobile, seMobile] = useState('')
+    const [job, setJob] = useState('')
     const [notes, setNotes] = useState('')
 
     const [editNotes, setEditNotes] = useState(false)
@@ -38,16 +42,19 @@ export default function PatientDashboard() {
 
         const patient = response?.data[0]
         */
-
-        setName('Jane Doe')
-        setAge('24')
-        setGender('Female')
-        setDOB('01/01/2000')
-        setJob('Accountant')
-        setEmail('email@example.com')
-        setPhone('(757) 555-0101')
-        setMobile('(757) 555-0202')
-        setNotes('')
+        let patients = auth?.patients
+        for (let i = 0; i < patients.length; i++) {
+            if (patients[i].id === parseInt(params.get("id"))) {
+                setFname(patients[i].firstName)
+                setLname(patients[i].lastName)
+                setAge(patients[i].age)
+                setGender(patients[i].gender)
+                setDOB(patients[i].dateOfBirth)
+                setEmail(patients[i].email)
+                setPhone(patients[i].phone)
+                setNotes(patients[i].notes)
+            }
+        }
     }
 
     const updateNotes = async(e) => {
@@ -61,27 +68,17 @@ export default function PatientDashboard() {
 
         const patient = response?.data[0]
         */
-
-        setName('Jane Doe')
-        setAge('24')
-        setGender('Female')
-        setDOB('01/01/2000')
-        setJob('Accountant')
-        setEmail('email@example.com')
-        setPhone('(757) 555-0101')
-        setMobile('(757) 555-0202')
-        
     }
 
-        useEffect(() => {
-            getPatientInfo()
-        },[]);
+    useEffect(() => {
+        getPatientInfo()
+    },[]);
 
     return (
         <div className="patient-dash">
             <div className="patient-info">
                 <img src={blank_profile} alt="" class="patient-img" />
-                <h2>Jane Doe</h2>
+                <h2>{fname} {lname}</h2>
                 <div class="info">
                     <div>
                         <i>Age</i>
