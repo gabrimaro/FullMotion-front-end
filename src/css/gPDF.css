@@ -70,3 +70,13 @@
     box-shadow:  0px 5px 5px #ccc;
     background-color: #1d4ed8;
 }
+
+.btns1 ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.centerMe {
+    align-items: center;
+}

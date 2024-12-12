@@ -19,32 +19,33 @@ function PDFgenerator() {
         const pnotes = e.target.pnotes.value;
         // Content to include in the PDF
         const content = `
-            Date:___/____/______         Start of Care:___/____/______
-
-            Therapist: Dr. John Johnson
             Patient Name: Jane Doe           Date of Birth: 
+            Therapist: Dr. John Johnson
+            
+            Date:___/____/______         Start of Care:___/____/______
 
 
             Diagnosis: 
-            ${dnotes || 'N/A'}
+                ${dnotes || 'N/A'}
 
 
             Subjective  Pain / Location:  ${pain || 'N/A'} / 10
-            ${snotes || 'N/A'}
+                ${snotes || 'N/A'}
 
-            # of Treatments: ______      Cancellations:  ________         No Shows: _______
+            Number of: 
+                Treatments: _____      Cancellations:  _____      No Shows: _____
 
 
             Objective Findings: 
-            ${onotes || 'N/A'}
+                ${onotes || 'N/A'}
 
 
             Assessment & Goals:
-            ${anotes || 'N/A'}
+                ${anotes || 'N/A'}
 
 
             Plan:  ${plan || 'N/A'}         Time Period: ${timePeriod || 'N/A'}
-            ${pnotes || 'N/A'}
+                ${pnotes || 'N/A'}
 
 
             Therapist Signature: __________________     Date: ___/____/_____
@@ -59,35 +60,41 @@ function PDFgenerator() {
         //jspdf.html(val,data)
     }
 
+    const clearFields = () => {
+        const form = document.querySelector('form');
+        form.reset();
+    }
+
+
     return(
         <div className='doc'>
 
 
             <div className="cont">
                 <div className="formInputs">
-                    <h2> SOAP Notes </h2><br></br>
+                    <h2> <b>SOAP Notes</b> </h2><br></br>
                     <form onSubmit={(e) => handleSubmit1(e)}>
-                        {/* Diagnosis */}
+
                         <label htmlFor="diagnosis">Diagnosis:</label><br />
                         <textarea name="dnotes" id="dnotes" placeholder="Enter diagnosis" /><br /><br />
 
-                        {/* Pain Level */}
+
                         <label htmlFor="pain">Pain Level (1-10):</label><br />
                         <input type="number" name="pain" id="pain" min="0" max="10" /><br /><br />
 
-                        {/* Subjective Notes */}
+
                         <label htmlFor="snotes">Subjective Notes:</label><br />
                         <textarea name="snotes" id="snotes" placeholder="Enter subjective notes" /><br /><br />
 
-                        {/* Objective Findings */}
+
                         <label htmlFor="onotes">Objective Findings:</label><br />
                         <textarea name="onotes" id="onotes" placeholder="Enter objective findings" /><br /><br />
 
-                        {/* Assessment Notes */}
+
                         <label htmlFor="anotes">Assessment & Goals:</label><br />
                         <textarea name="anotes" id="anotes" placeholder="Enter assessment and goals" /><br /><br />
 
-                        {/* Plan */}
+
                         <label>Plan:</label><br />
                         <div className="formOps">
                             <input type="radio" name="plan" value="Continue" id="continue" />
@@ -99,16 +106,25 @@ function PDFgenerator() {
                         </div>
 
 
-                        {/* Time Period */}
+
                         <label htmlFor="timePeriod">Time Period:</label><br />
                         <input type="text" name="timePeriod" id="timePeriod" placeholder="e.g., 1 week, 2 weeks" /><br /><br />
 
-                        {/* Plan Notes */}
+
                         <label htmlFor="pnotes">Plan Notes:</label><br />
                         <textarea name="pnotes" id="pnotes" placeholder="Enter additional plan notes" /><br /><br />
                         <br/>
-                                    
-                        <button className='btn1'>Generate Notes</button>
+                        
+                        <div className="btns1">
+                            <ul>
+                                <li>
+                                    <button className='btn1'>Generate Notes</button>
+                                </li>
+                                <li>
+                                    <button className='btn1'  type="button" onClick={clearFields}>Clear</button>
+                                </li>
+                            </ul>
+                        </div>
 
                     </form>                       
                 </div>
