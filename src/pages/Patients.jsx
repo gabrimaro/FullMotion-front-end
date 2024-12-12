@@ -8,9 +8,7 @@ import { useEffect } from 'react';
 import Axios from 'axios';
 
 export default function Patients() {
-    const { auth } = useAuth();
-    const username = auth?.username;
-    const info = auth?.info;
+    const { auth, setAuth } = useAuth();
     const [rows, setRows] = useState([])
     const [addBool, setAddBool] = useState(false)
 
@@ -19,19 +17,31 @@ export default function Patients() {
     const [age, setAge] = useState('')
     const [gender, setGender] = useState('')
     const [dob, setDOB] = useState('')
-    const [email, setEmail] = useState('')
+    const [pEmail, setpEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [notes, setNotes] = useState('')
 
-    const getPatients = async(e) => {
-        e.preventDefault()
+    const username = auth?.username
+    const email = auth?.email
+    const prefix = auth?.prefix
+    const firstname = auth?.firstName
+    const lastname = auth?.lastName
+    const suffix = auth?.suffix
+    const info = auth?.info
+
+    const getPatients = async() => {
         try {
             const response = await Axios.post("http://localhost:8080/patients/user/"+username,
                 {
                 }
             );
 
+            let patients = response?.data
+
             setRows(response?.data)
+            
+            setAuth({username, email, prefix, firstname, lastname, suffix, info, patients})
+            console.log(response?.data)
         }
         catch(err) {
             console.log(err)
@@ -51,20 +61,23 @@ export default function Patients() {
                     email: email,
                     phone: phone,
                     notes: '',
-                    user: info
+                    username: username
                 }
             );
 
-            setRows(response?.data)
+            console.log(response)
         }
         catch(err) {
             console.log(err)
         }
     }
 
+    useEffect(() => {
+        getPatients();
+    }, [addBool])
+
     return (
         <div className='patientList'>
-            <button onClick={getPatients}>button</button>
             <div className="top">
                 <button className='pList-btn' onClick={() => setAddBool(true)}> 
                     <button className='btn' >Add Patient</button>
@@ -111,8 +124,8 @@ export default function Patients() {
                     <input
                         type="text"
                         placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={pEmail}
+                        onChange={(e) => setpEmail(e.target.value)}
                     />
                     <input
                         type="text"

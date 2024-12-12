@@ -22,11 +22,11 @@ export const PatientList = ({ rows }) => {
                 {rows.map((row, index) => {
                     return (
                         <tr key={index}>
-                            <td className='name-row'><Link to={"/patients/dashboard?id="+row?.id}>{row.name}</Link></td>
-                            <td className='phone-row'>{row?.number}</td>
+                            <td className='name-row'><Link to={"/patients/dashboard?id="+row?.id}>{row.firstName} {row.lastName}</Link></td>
+                            <td className='phone-row'>{row?.phone}</td>
                             <td className='status-row'> 
-                                <span className={`label label-${row?.status}`}>
-                                    {row?.status}
+                                <span className={`label label-Active`}>
+                                    Active
                                 </span>
                             </td>
                             <td className='actions-row'>
