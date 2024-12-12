@@ -1,11 +1,9 @@
+import Axios from 'axios';
 import React, { useState } from 'react';
-import { Modal } from '../components/modal';
 import { PatientList } from '../components/patientList';
 import '../css/modal.css';
 import '../css/patientList.css';
 import useAuth from '../hooks/useAuth';
-import { useEffect } from 'react';
-import Axios from 'axios';
 
 export default function Patients() {
     const { auth } = useAuth();
@@ -65,6 +63,8 @@ export default function Patients() {
     return (
         <div className='patientList'>
             <button onClick={getPatients}>button</button>
+
+            <h1 className='nHeading'>Patient List</h1>
             <div className="top">
                 <button className='pList-btn' onClick={() => setAddBool(true)}> 
                     <button className='btn' >Add Patient</button>

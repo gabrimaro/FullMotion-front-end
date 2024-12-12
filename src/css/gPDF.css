@@ -1,0 +1,72 @@
+.doc {
+    padding-top: 40px;
+}
+
+.cont {
+    background-color: #85c4e6;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+
+.formInputs{
+    padding: 20px;
+    width: 450px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.formInputs label{
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.formOps {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: -200px;
+
+}
+
+
+.formInputs input, textarea {
+    width: 100%; /* Full width */
+    max-width: 400px; /* Set a maximum width */
+    padding: 10px; /* Add padding inside the box */
+    font-size: 16px; /* Adjust font size */
+    border: 2px solid #ccc; /* Set a border color */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove default outline */
+    background-color: #f9f9f9; /* Light background color */
+    transition: all 0.3s ease; /* Smooth transitions for focus */
+}
+
+/* Change border color and background on focus */
+.formInputs input:focus, textarea:focus {
+    border-color: #007bff; /* Blue border on focus */
+    background-color: #fff; /* White background on focus */
+}
+
+/* Specific styles for textareas */
+.formInputs textarea {
+    height: 100px; /* Default height */
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+.btn1 {
+    margin: auto;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow:  0px 5px 5px #ccc;
+    background-color: #1d4ed8;
+}

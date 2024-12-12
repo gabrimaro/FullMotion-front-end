@@ -21,7 +21,7 @@ export default function Navbar() {
                         <NavLink to="/appointments" className="nav-link"><i class="bx bxs-calendar"></i><span className="nav-text">Appointments</span></NavLink>
                     </li>
                     <li class="nav-item">
-                        <NavLink to="/messages" className="nav-link"><i class="bx bxs-message-dots"></i><span className="nav-text">Messages</span></NavLink>
+                        <NavLink to="/messages" className="nav-link"><i class="bx bxs-message-dots"></i><span className="nav-text">Documents</span></NavLink>
                     </li>
                     <li><NavLink to="/"><img src={pfp} alt="me" class="userPFP"/></NavLink></li>
                 </ul>

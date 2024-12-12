@@ -5,9 +5,13 @@
 }
 
 h1 {
-    margin-top: 25px;
+    margin-top: 5px;
     margin-left: 25px;
 
+}
+
+.btn{
+    
 }
 
 
@@ -28,8 +32,8 @@ h1 {
 .nHeading {
     font-size: clamp(3rem, 2.8cqi, 6rem);
     letter-spacing: 0.3rem;
-    padding-left: 1.3rem;
-    padding-top: 3rem;
+    padding-left: 1.1rem;
+    padding-top: 2rem;
 }
 
 
